@@ -1,0 +1,51 @@
+id,name,surname,email,genre,birth,phone,country,city,state
+1,+34 612 345 678,España,Madrid,Madrid
+2,Sofía,Rodríguez,sofia.rodriguez@example.com,Femenino,1995-09-23,+52 55 1234 5678,México,CDMX,CDMX
+3,Mateo,Martínez,mateo.martinez@example.com,Masculino,2001-11-05,+54 11 9876 5432,Argentina,Buenos Aires,CABA
+4,Valentina,López,valentina.lopez@example.com,Femenino,1992-07-19,+56 9 8765 4321,Chile,Santiago,Santiago
+5,Lucas,González,lucas.gonzalez@example.com,Masculino,1985-01-30,+34 699 887 766,España,Barcelona,Cataluña
+6,Camila,Pérez,camila.perez@example.com,Femenino,1998-03-14,+57 300 123 4567,Colombia,Bogotá,Cundinamarca
+7,Diego,Sánchez,diego.sanchez@example.com,Masculino,1990-12-25,+52 81 2345 6789,México,Monterrey,Nuevo León
+8,Isabella,Ramírez,isabella.ramirez@example.com,Femenino,2003-05-08,+54 341 456 7890,Argentina,Rosario,Santa Fe
+9,Nicolás,Torres,nicolas.torres@example.com,Masculino,1987-08-22,+56 2 2345 6789,Chile,Valparaíso,Valparaíso
+10,Mariana,Flores,mariana.flores@example.com,Femenino,1994-10-11,+57 315 987 6543,Colombia,Medellín,Antioquia
+11,Sebastián,Gómez,sebastian.gomez@example.com,Masculino,1993-06-15,+34 655 443 322,España,Sevilla,Andalucía
+12,Gabriela,Díaz,gabriela.diaz@example.com,Femenino,1996-02-28,+52 33 3456 7890,México,Guadalajara,Jalisco
+13,Samuel,Morales,samuel.morales@example.com,Masculino,1989-11-17,+54 261 123 4567,ArgentinaMendoza
+14,Lucía,Vázquez,lucia.vazquez@example.com,Femenino,2000-04-03,Chile,Concepción,Bío Bío
+15,Daniel,Castro,daniel.castro@example.com,Masculino,1982-09-09,+57 320 456 7890,Colombia,Cali,Valle del Cauca
+16,Valeria,Romero,Femenino,1997-01-21,+34 611 223 344,España,Valencia,Valencia
+17,Joaquín,Herrera,joaquin.herrera@example.com,Masculino,2002-08-14,+52 999 123 4567,México,Mérida,Yucatán
+18,Fernanda,Medina,fernanda.medina@example.com,Femenino,1991-05-30,+54 351 987 6543,Argentina,Córdoba,Córdoba
+19,Matías,Ruiz,matias.ruiz@example.com,Masculino,1986-12-04,+56 55 234 5678,Chile,Antofagasta,Antofagasta
+20,Emilia,Jiménez,emilia.jimenez@example.com,Femenino,1999-07-26,+57 310 765 4321,Colombia,Barranquilla,Atlántico
+21,Tomás,Silva,tomas.silva@example.com,Masculino,1994-03-18,+34 688 776 655,España,Zaragoza,Aragón
+22,Antonia,Vargas,antonia.vargas@example.com,Femenino,1988-10-09,+52 442 123 4567,México,Querétaro,Querétaro
+23,Bautista,Ríos,bautista.rios@example.com,Masculino,2004-02-11,+54 221 456 7890,Argentina,La Plata,Buenos Aires
+24,Francisca,Mendoza,francisca.mendoza@example.com,Femenino,1995-06-07,+56 32 345 6789,Chile,Viña del Mar,Valparaíso
+25,Benjamin,benjamin.alvarez@example.com,Masculino,1991-01-15,+57 318 123 4567,Colombia,Cartagena,Bolívar
+26,Catalina,Ortega,catalina.ortega@example.com,Femenino,1993-11-20,+34 633 445 566,España,Málaga,Andalucía
+27,Felipe,Benítez,felipe.benitez@example.com,Masculino,1987-05-24,+52 664 123 4567,México,Tijuana,Baja California
+28,Martina,Ibáñez,martina.ibanez@example.com,Femenino,2001-09-02,+54 381 987 6543,Argentina,Tucumán,Tucumán
+29,Agustín,Navarro,agustin.navarro@example.com,Masculino,1996-12-13,+56 71 234 5678,Chile,Talca,Maule
+30,Elena,Molina,elena.molina@example.com,Femenino,1984-04-08,+57 301 987 6543,Colombia,Bucaramanga,Santander
+31,Santiago,Delgado,santiago.delgado@example.com,Masculino,1992-08-29,+34 622 112 233,España,Murcia,Murcia
+32,Natalia,Ramos,1998-10-15,+52 222 123 4567,México,Puebla,Puebla
+33,Facundo,Gil,facundo.gil@example.com,Masculino,2003-03-22,+54 291 456 7890,Argentina,Bahía Blanca,Buenos Aires
+34,Javiera,Rojas,javiera.rojas@example.com,Femenino,1990-07-06,+56 51 234 5678,Chile,La Serena,Coquimbo
+35,Carlos,Ortiz,carlos.ortiz@example.com,Masculino,1983-02-18,+57 311 123 4567,Colombia,Pereira,Risaralda
+36,Paula,Marín,paula.marin@example.com,Femenino,1997-05-12,+34 677 889 900,España,Palma,Islas Baleares
+37,Leonardo,Flores,leonardo.flores@example.com,1995-12-01,+52 744 123 4567,México,Acapulco,Guerrero
+38,Victoria,Salazar,victoria.salazar@example.com,Femenino,2000-06-27,+54 294 987 6543,Argentina,Bariloche,Río Negro
+39,Gonzalo,Cabrera,gonzalo.cabrera@example.com,Masculino,1989-09-14,+56 45 234 5678,Chile,Temuco,Araucanía
+40,Julieta,Acosta,julieta.acosta@example.com,Femenino,2002-01-10,+57 316 987 6543,Colombia,Ibagué,Tolima
+41,Álvaro,Miranda,alvaro.miranda@example.com,Masculino,1991-03-31,+34 644 556 677,España,Bilbao,País Vasco
+42,Daniela,Luna,daniela.luna@example.com,Femenino,1996-07-24,+52 443 123 4567,México,Morelia,Michoacán
+43,Ignacio,Suárez,ignacio.suarez@example.com,Masculino,1986-11-08,+54 379 456 7890,Argentina,Corrientes,Corrientes
+44,Camila,Fuentes,camila.fuentes@example.com,Femenino,1994-04-16,+56 72 234 5678,Chile,Rancagua,O'Higgins
+45,Andrés,Salazar,andres.salazar@example.com,Masculino,1988-10-22,+57 313 123 4567,Colombia,Manizales,Caldas
+46,Sara,Rey,sara.rey@example.com,Femenino,1999-08-05,+34 600 112 233,España,Valladolid,Castilla y León
+47,Rodrigo,Pardo,rodrigo.pardo@example.com,Masculino,1993-05-19,+52 614 123 4567,México,Chihuahua,Chihuahua
+48,Abril,Giménez,abril.gimenez@example.com,Femenino,2004-12-12,+54 264 987 6543,Argentina,San Juan,San Juan
+49,Cristóbal,Soto,cristobal.soto@example.com,Masculino,1992-02-02,+56 57 234 5678,Chile,Iquique,Tarapacá
+50,Manuela,Cárdenas,manuela.cardenas@example.com,Femenino,1985-06-30,+57 317 987 6543,Colombia,Pasto,Nariño

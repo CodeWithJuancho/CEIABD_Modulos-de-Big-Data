@@ -1,0 +1,9 @@
+Han sido rechazadas 7 filas por tener valores vacíos.
+ate
+1,+34 612 345 678,España,Madrid,Madrid,,,,,
+13,Samuel,Morales,samuel.morales@example.com,Masculino,1989-11-17,+54 261 123 4567,ArgentinaMendoza,,
+14,Lucía,Vázquez,lucia.vazquez@example.com,Femenino,2000-04-03,Chile,Concepción,Bío Bío,
+16,Valeria,Romero,Femenino,1997-01-21,+34 611 223 344,España,Valencia,Valencia,
+25,Benjamin,benjamin.alvarez@example.com,Masculino,1991-01-15,+57 318 123 4567,Colombia,Cartagena,Bolívar,
+32,Natalia,Ramos,1998-10-15,+52 222 123 4567,México,Puebla,Puebla,,
+37,Leonardo,Flores,leonardo.flores@example.com,1995-12-01,+52 744 123 4567,México,Acapulco,Guerrero,
