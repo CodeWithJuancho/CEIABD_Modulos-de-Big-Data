@@ -2,7 +2,11 @@
 source("lecturaDatos.R")
 
 # se fija la ruta donde se encuentran los datos
+<<<<<<< HEAD
 path <- ""
+=======
+path <- "../"
+>>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
 file <- "Data.csv"
 
 # lectura de los datos

@@ -11,8 +11,13 @@ datos[1:5,4] <- NA
 
 # se determina el numero de instancias sin datos perdidos y con datos
 # perdidos. A observar la comodidad de uso de las funciones ccn e icn
+<<<<<<< HEAD
 completos <- ccn(datos)
 incompletos <- icn(datos)
+=======
+completos <- sum(complete.cases(datos))
+incompletos <- sum(!complete.cases(datos))
+>>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
 cat("Datos completos: ",completos, " e incompletos: ",incompletos,"\n")
 
 # se hace la imputacion
