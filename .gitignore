@@ -1,11 +1,20 @@
 # Gitignore files
 *.gh_token
 <<<<<<< HEAD
+<<<<<<< Updated upstream
 .vscode/
 =======
+=======
+>>>>>>> Stashed changes
 **/resolucion/
 **/not_yet/
 
+<<<<<<< Updated upstream
 >>>>>>> 863fb9bdc28bfbeedac8681df733c09fbf9c6210
+=======
+=======
+.vscode/
+>>>>>>> 94b40750e31bf3da0e69f60bfcd50111edbf19f0
+>>>>>>> Stashed changes
 
 
