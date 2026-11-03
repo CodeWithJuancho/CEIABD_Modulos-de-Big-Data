@@ -1,127 +1,118 @@
-# ANALISIS DE 1000 TIRADAS SIMULADAS ----
-# Abran ruleta.Rproj antes de ejecutar este archivo en RStudio.
-# No necesita instalar paquetes. Los datos originales no se modifican.
-# Las frecuencias describen el historial. No predicen la proxima tirada.
+# ANÁLISIS DE UNA RULETA EUROPEA: NÚMEROS DEL 0 AL 36 ----
+# Abran ruleta.Rproj. Ejecuten este archivo completo o sus bloques en orden.
+# Las tablas aparecen en Console y los gráficos en Plots de RStudio.
+# No necesita paquetes adicionales ni guarda archivos de resultados.
 
-# 1. Configuracion ----
+# 1. Leer los datos ----
 archivo_entrada <- file.path("datos", "ruleta_1000.csv")
-carpeta_resultados <- "resultados"
-ultimas_x <- 100L  # Cambien solo este valor para analizar las ultimas X tiradas.
+ultimas_x <- 100  # Cambien este número para elegir las últimas X tiradas.
 
-# 2. Leer el CSV y comprobar su estructura ----
 if (!file.exists(archivo_entrada)) {
-  stop("No se encuentra el CSV. Abran ruleta.Rproj y mantengan la carpeta datos junto a los scripts.")
+  stop("No se encuentra el CSV. Abran ruleta.Rproj y comprueben la carpeta datos.")
 }
+
+# read.csv2() lee el CSV de este ejercicio, separado por punto y coma.
 datos <- read.csv2(archivo_entrada, fileEncoding = "UTF-8",
                    stringsAsFactors = FALSE)
 
+# Comprobar los datos antes de calcular evita resultados engañosos.
 if (!identical(names(datos), c("tirada", "numero"))) {
-  stop("El CSV debe contener exactamente las columnas tirada y numero.")
+  stop("El CSV debe tener exactamente las columnas tirada y numero.")
 }
-if (nrow(datos) == 0L || anyNA(datos)) {
-  stop("El archivo esta vacio o tiene datos ausentes. Revisen el origen sin sustituirlos por cero.")
+if (nrow(datos) == 0 || anyNA(datos)) {
+  stop("El archivo está vacío o tiene valores ausentes.")
 }
 if (!is.numeric(datos$tirada) || !is.numeric(datos$numero)) {
-  stop("Las columnas tirada y numero deben ser numericas.")
+  stop("Las dos columnas deben ser numéricas.")
 }
 if (any(!is.finite(datos$tirada)) || any(!is.finite(datos$numero))) {
-  stop("Se han encontrado valores numericos no finitos.")
+  stop("Hay valores numéricos no finitos.")
 }
 if (any(datos$numero != floor(datos$numero)) ||
     any(datos$numero < 0 | datos$numero > 36)) {
-  stop("Los resultados deben ser numeros enteros entre 0 y 36.")
+  stop("Los resultados deben ser enteros entre 0 y 36.")
 }
 if (any(datos$tirada < 1 | datos$tirada != floor(datos$tirada)) ||
-    anyDuplicated(datos$tirada) > 0L) {
-  stop("Los identificadores de tirada deben ser enteros positivos y no repetidos.")
+    anyDuplicated(datos$tirada) > 0) {
+  stop("Las tiradas deben tener identificadores enteros, positivos y únicos.")
 }
 
-# El orden de las filas determina que significa 'las ultimas'.
+# El historial se ordena por tirada antes de buscar las últimas.
 datos <- datos[order(datos$tirada), ]
 total <- nrow(datos)
-if (length(ultimas_x) != 1L || !is.numeric(ultimas_x) ||
+if (length(ultimas_x) != 1 || !is.numeric(ultimas_x) ||
     is.na(ultimas_x) || !is.finite(ultimas_x) ||
     ultimas_x < 1 || ultimas_x != floor(ultimas_x) || ultimas_x > total) {
-  stop("ultimas_x debe ser un entero entre 1 y el numero de tiradas disponibles.")
+  stop("ultimas_x debe ser un entero entre 1 y el total de tiradas.")
 }
+cat("Tiradas leídas:", total, "\n")
 
-dir.create(carpeta_resultados, showWarnings = FALSE)
-cat("Tiradas leidas:", total, "\n")
-print(head(datos))
-
-# 3. Crear color, paridad y docena ----
-# Estas etiquetas se calculan desde numero, no se eligen al azar.
+# 2. Añadir color, paridad y docena ----
+# $ accede a una columna; ifelse(condición, valor_si_se_cumple, valor_si_no).
 rojos <- c(1, 3, 5, 7, 9, 12, 14, 16, 18,
            19, 21, 23, 25, 27, 30, 32, 34, 36)
 
+# %in% comprueba si el número está en la lista de rojos.
 datos$color <- ifelse(datos$numero == 0, "Verde",
                       ifelse(datos$numero %in% rojos, "Rojo", "Negro"))
 
-# Cero se conserva aparte en la agrupacion de paridad de la ruleta.
+# %% devuelve el resto de una división. En la ruleta, el cero va aparte.
 datos$paridad <- ifelse(datos$numero == 0, "Cero",
                         ifelse(datos$numero %% 2 == 0, "Par", "Impar"))
-
 datos$docena <- ifelse(datos$numero == 0, "Cero",
                        ifelse(datos$numero <= 12, "1 a 12",
                               ifelse(datos$numero <= 24, "13 a 24", "25 a 36")))
 
-# 4. Definir una funcion para resumir cualquier grupo de resultados ----
+# 3. Preparar una función para no repetir los mismos cálculos ----
 resumir <- function(valores, categorias, probabilidades_modelo) {
-  # factor conserva incluso categorias que no aparecen en la muestra.
+  # table() cuenta. factor() conserva también las categorías con cero apariciones.
   frecuencia <- as.integer(table(factor(valores, levels = categorias)))
   n <- length(valores)
-
-  resumen <- data.frame(
+  proporcion <- frecuencia / n
+  
+  data.frame(
     resultado = as.character(categorias),
     frecuencia = frecuencia,
-    proporcion_observada = frecuencia / n,
-    probabilidad_modelo = probabilidades_modelo
+    proporcion_observada = proporcion,
+    probabilidad_modelo = probabilidades_modelo,
+    porcentaje_observado = 100 * proporcion,
+    porcentaje_modelo = 100 * probabilidades_modelo,
+    frecuencia_esperada = n * probabilidades_modelo,
+    diferencia_pp = 100 * proporcion - 100 * probabilidades_modelo
   )
-  resumen$porcentaje_observado <- 100 * resumen$proporcion_observada
-  resumen$porcentaje_modelo <- 100 * resumen$probabilidad_modelo
-  resumen$frecuencia_esperada <- n * resumen$probabilidad_modelo
-  resumen$diferencia_pp <- resumen$porcentaje_observado - resumen$porcentaje_modelo
-  return(resumen)
 }
+# diferencia_pp compara porcentajes: 50 % − 48,65 % = 1,35 puntos porcentuales.
 
-# 5. Obtener los cuatro resumenes de toda la muestra ----
+# 4. Resumir todo el historial ----
+# En el modelo justo hay 37 números, 18 rojos, 18 negros y un cero verde.
 resumen_numeros <- resumir(datos$numero, 0:36, rep(1 / 37, 37))
-resumen_colores <- resumir(datos$color, c("Rojo", "Negro", "Verde"),
-                           c(18, 18, 1) / 37)
-resumen_paridad <- resumir(datos$paridad, c("Par", "Impar", "Cero"),
-                           c(18, 18, 1) / 37)
+resumen_colores <- resumir(datos$color, c("Rojo", "Negro", "Verde"), c(18, 18, 1) / 37)
+resumen_paridad <- resumir(datos$paridad, c("Par", "Impar", "Cero"), c(18, 18, 1) / 37)
 resumen_docenas <- resumir(datos$docena, c("1 a 12", "13 a 24", "25 a 36", "Cero"),
                            c(12, 12, 12, 1) / 37)
 
-# Estos controles verifican calculos; no demuestran que una ruleta sea justa.
+# stopifnot() detiene el código si una comprobación de los cálculos falla.
 stopifnot(sum(resumen_numeros$frecuencia) == total,
           sum(resumen_colores$frecuencia) == total,
           sum(resumen_paridad$frecuencia) == total,
           sum(resumen_docenas$frecuencia) == total,
           abs(sum(resumen_numeros$proporcion_observada) - 1) < 1e-10)
 
-cat("\nRESUMEN POR COLORES\n")
-print(resumen_colores, digits = 4, row.names = FALSE)
-
-# Los cinco primeros por frecuencia observada, no por probabilidad futura.
-# En caso de empate se ordenan de menor a mayor numero.
+# Orden descendente de frecuencia; los empates se ordenan por número.
 orden_frecuencia <- order(-resumen_numeros$frecuencia,
                           as.integer(resumen_numeros$resultado))
 mas_frecuentes <- head(resumen_numeros[orden_frecuencia, ], 5)
-cat("\nCINCO NUMEROS MAS FRECUENTES EN ESTE HISTORIAL\n")
-print(mas_frecuentes, digits = 4, row.names = FALSE)
 
-# 6. Analizar las ultimas X tiradas ----
+# 5. Comparar las últimas tiradas ----
+# tail() selecciona las últimas filas de una tabla.
 recientes <- tail(datos, ultimas_x)
 resumen_ultimas_x <- resumir(recientes$numero, 0:36, rep(1 / 37, 37))
-cat("\nULTIMAS", ultimas_x, "TIRADAS: frecuencias por numero\n")
-print(resumen_ultimas_x[, c("resultado", "frecuencia", "porcentaje_observado")],
-      digits = 4, row.names = FALSE)
 
-# Comparar ventanas con un denominador distinto en cada una.
-ventanas <- c(20L, 100L, 500L, total)
+ventanas <- c(20, 100, 500, total)
 ventanas <- sort(unique(ventanas[ventanas <= total]))
 comparacion_ventanas <- data.frame()
+
+# El bucle repite el cálculo con cada tamaño de ventana disponible.
 for (tamano in ventanas) {
   tramo <- tail(datos, tamano)
   fila <- data.frame(
@@ -134,11 +125,10 @@ for (tamano in ventanas) {
   fila$porcentaje_rojo_modelo <- 100 * 18 / 37
   comparacion_ventanas <- rbind(comparacion_ventanas, fila)
 }
-cat("\nCOMPARACION DE VENTANAS\n")
-print(comparacion_ventanas, digits = 4, row.names = FALSE)
 
-# 7. Calcular la frecuencia acumulada de rojo ----
-# TRUE se cuenta como 1 y FALSE como 0. El denominador crece en cada paso.
+# 6. Calcular la evolución acumulada del rojo ----
+# cumsum() acumula los rojos: TRUE cuenta como 1 y FALSE como 0.
+# seq_len(total) genera 1, 2, 3... para dividir por las tiradas acumuladas.
 frecuencia_acumulada_rojo <- cumsum(datos$color == "Rojo") / seq_len(total)
 evolucion_rojo <- data.frame(
   tirada = datos$tirada,
@@ -146,61 +136,108 @@ evolucion_rojo <- data.frame(
   probabilidad_modelo = rep(18 / 37, total)
 )
 
-# 8. Guardar tablas de resultados ----
-# Cada nueva ejecucion actualiza estos archivos derivados, no el CSV original.
-write.csv2(datos, file.path(carpeta_resultados, "datos_enriquecidos.csv"), row.names = FALSE)
-write.csv2(resumen_numeros, file.path(carpeta_resultados, "resumen_numeros.csv"), row.names = FALSE)
-write.csv2(resumen_colores, file.path(carpeta_resultados, "resumen_colores.csv"), row.names = FALSE)
-write.csv2(resumen_paridad, file.path(carpeta_resultados, "resumen_paridad.csv"), row.names = FALSE)
-write.csv2(resumen_docenas, file.path(carpeta_resultados, "resumen_docenas.csv"), row.names = FALSE)
-write.csv2(resumen_ultimas_x, file.path(carpeta_resultados, "resumen_ultimas_x.csv"), row.names = FALSE)
-write.csv2(comparacion_ventanas, file.path(carpeta_resultados, "comparacion_ventanas.csv"), row.names = FALSE)
-write.csv2(evolucion_rojo, file.path(carpeta_resultados, "evolucion_rojo.csv"), row.names = FALSE)
+# 7. Mostrar los resúmenes en la consola ----
+mostrar <- function(titulo, tabla) {
+  cat("\n", titulo, "\n", sep = "")
+  # max evita que R oculte filas de los resúmenes.
+  print(tabla, row.names = FALSE, digits = 4, max = nrow(tabla) * ncol(tabla))
+}
 
-# 9. Grafico de frecuencias por numero ----
-colores_numeros <- ifelse(0:36 == 0, "#168067",
-                          ifelse(0:36 %in% rojos, "#BA3A43", "#303A46"))
-png(file.path(carpeta_resultados, "01_frecuencias_numeros.png"),
-    width = 1500, height = 850, res = 140)
+mostrar("RESUMEN POR NÚMEROS", resumen_numeros)
+mostrar("RESUMEN POR COLORES", resumen_colores)
+mostrar("RESUMEN POR PARIDAD", resumen_paridad)
+mostrar("RESUMEN POR DOCENAS", resumen_docenas)
+mostrar("CINCO NÚMEROS MÁS FRECUENTES EN EL HISTORIAL", mas_frecuentes)
+mostrar(paste("ÚLTIMAS", ultimas_x, "TIRADAS: RESUMEN POR NÚMEROS"), resumen_ultimas_x)
+mostrar("COMPARACIÓN DE VENTANAS", comparacion_ventanas)
+
+# 8. Gráfico de frecuencias por número ----
+# Los siete gráficos aparecen en Plots. Usen sus flechas para volver a los anteriores.
+par(mfrow = c(1, 1))
+colores_numeros <- ifelse(0:36 == 0, "darkgreen",
+                          ifelse(0:36 %in% rojos, "firebrick", "grey20"))
 barplot(resumen_numeros$frecuencia, names.arg = 0:36, col = colores_numeros,
         border = NA, las = 2, cex.names = 0.8,
-        main = paste("Frecuencias por numero en", total, "tiradas"),
-        xlab = "Numero", ylab = "Veces que aparece")
-abline(h = total / 37, col = "#2066A8", lty = 2, lwd = 2)
-legend("topright", legend = "Frecuencia esperada por numero", col = "#2066A8",
+        main = paste("Frecuencias por número en", total, "tiradas"),
+        xlab = "Número", ylab = "Veces que aparece")
+# La línea indica lo esperado en promedio: total de tiradas dividido entre 37.
+abline(h = total / 37, col = "steelblue", lty = 2, lwd = 2)
+legend("topright", legend = "Frecuencia esperada por número", col = "steelblue",
        lty = 2, lwd = 2, bty = "n", cex = 0.85)
-dev.off()
 
-# 10. Grafico de porcentajes por color ----
-png(file.path(carpeta_resultados, "02_porcentajes_colores.png"),
-    width = 1300, height = 850, res = 140)
-posiciones <- barplot(resumen_colores$porcentaje_observado,
-                      names.arg = resumen_colores$resultado,
-                      col = c("#BA3A43", "#303A46", "#168067"), border = NA, las = 1,
-                      ylim = c(0, max(65, resumen_colores$porcentaje_observado + 10)),
-                      main = "Porcentajes observados y modelo",
-                      ylab = "Porcentaje de tiradas")
-points(posiciones, resumen_colores$porcentaje_modelo,
-       pch = 18, cex = 1.5, col = "#2066A8")
-legend("topright", legend = "Modelo teorico", pch = 18,
-       col = "#2066A8", bty = "n")
-dev.off()
+# 9. Gráfico de porcentajes por color ----
+# La misma función sirve para color, paridad y docenas.
+graficar_porcentajes <- function(tabla, titulo, colores) {
+  posiciones <- barplot(tabla$porcentaje_observado,
+                        names.arg = tabla$resultado, col = colores,
+                        border = NA, las = 1,
+                        ylim = c(0, max(70, tabla$porcentaje_observado + 25,
+                                        tabla$porcentaje_modelo + 25)),
+                        main = titulo, ylab = "Porcentaje de tiradas")
+  
+  # Barras y etiquetas: datos observados. Rombos: probabilidades del modelo.
+  points(posiciones, tabla$porcentaje_modelo, pch = 18, cex = 1.5, col = "steelblue")
+  etiquetas <- paste0(round(tabla$porcentaje_observado, 1), " %\n",
+                      tabla$frecuencia, " tiradas")
+  text(posiciones, pmax(tabla$porcentaje_observado, tabla$porcentaje_modelo) + 7,
+       labels = etiquetas, cex = 0.85)
+  legend("topright", legend = "Modelo teórico", pch = 18,
+         col = "steelblue", bty = "n", cex = 0.85)
+}
 
-# 11. Grafico de evolucion acumulada ----
-png(file.path(carpeta_resultados, "03_evolucion_rojo.png"),
-    width = 1400, height = 850, res = 140)
+graficar_porcentajes(resumen_colores, "Resultados por color",
+                     c("firebrick", "grey20", "darkgreen"))
+
+# 10. Gráfico de pares e impares ----
+# El cero tiene su propia categoría y una probabilidad del modelo de 1/37.
+graficar_porcentajes(resumen_paridad, "Resultados por paridad",
+                     c("darkcyan", "darkorange", "darkgreen"))
+
+# 11. Gráfico de docenas ----
+graficar_porcentajes(resumen_docenas, "Resultados por docena",
+                     c("darkcyan", "darkorange", "mediumpurple", "darkgreen"))
+
+# 12. Gráfico de los cinco números más frecuentes ----
+posiciones <- barplot(mas_frecuentes$frecuencia,
+                      names.arg = mas_frecuentes$resultado, col = "darkcyan",
+                      border = NA, las = 1,
+                      ylim = c(0, max(mas_frecuentes$frecuencia, total / 37) + 15),
+                      main = "Cinco números más frecuentes del historial",
+                      xlab = "Número", ylab = "Veces que aparece")
+text(posiciones, mas_frecuentes$frecuencia + 3,
+     labels = mas_frecuentes$frecuencia)
+abline(h = total / 37, col = "steelblue", lty = 2, lwd = 2)
+legend("topright", legend = "Esperada para cualquier número",
+       col = "steelblue", lty = 2, lwd = 2, bty = "n", cex = 0.8)
+# Este ranking describe el historial; no indica números con más probabilidad futura.
+
+# 13. Gráfico de comparación de ventanas ----
+# Cada porcentaje divide los rojos entre las tiradas de ESA ventana.
+posiciones <- barplot(comparacion_ventanas$porcentaje_rojo,
+                      names.arg = comparacion_ventanas$ultimas_tiradas,
+                      col = "firebrick", border = NA, las = 1,
+                      ylim = c(0, max(70, comparacion_ventanas$porcentaje_rojo + 25)),
+                      main = "Rojo en las últimas tiradas",
+                      xlab = "Tamaño de la ventana", ylab = "Porcentaje de rojo")
+text(posiciones, comparacion_ventanas$porcentaje_rojo + 7,
+     labels = paste0(round(comparacion_ventanas$porcentaje_rojo, 1), " %\n",
+                     comparacion_ventanas$rojos, " rojos"), cex = 0.85)
+abline(h = 100 * 18 / 37, col = "steelblue", lty = 2, lwd = 2)
+legend("topright", legend = "Modelo 18/37", col = "steelblue",
+       lty = 2, lwd = 2, bty = "n", cex = 0.85)
+# Las ventanas se solapan: pertenecen al mismo historial.
+
+# 14. Gráfico de evolución acumulada ----
 plot(seq_len(total), 100 * frecuencia_acumulada_rojo, type = "l", lwd = 2,
-     col = "#BA3A43", ylim = c(0, 100), las = 1,
-     main = "Evolucion del porcentaje acumulado de rojo",
+     col = "firebrick", ylim = c(0, 100), las = 1,
+     main = "Evolución del porcentaje acumulado de rojo",
      xlab = "Tiradas acumuladas", ylab = "Porcentaje acumulado")
-abline(h = 100 * 18 / 37, col = "#2066A8", lty = 2, lwd = 2)
+abline(h = 100 * 18 / 37, col = "steelblue", lty = 2, lwd = 2)
 legend("topright", legend = c("Observado", "Modelo 18/37"),
-       col = c("#BA3A43", "#2066A8"), lty = c(1, 2), lwd = 2, bty = "n")
-dev.off()
+       col = c("firebrick", "steelblue"), lty = c(1, 2), lwd = 2, bty = "n")
 
-# 12. Cerrar con una interpretacion correcta ----
-cat("\nResultados guardados en:", carpeta_resultados, "\n")
-cat("El historial describe lo ocurrido; no cambia por si solo la siguiente tirada.\n")
-cat("En el modelo justo e independiente: cada numero tiene probabilidad 1/37,\n")
-cat("rojo y negro 18/37 cada uno, y cero 1/37.\n")
-cat("Una frecuencia cero en una ventana no implica probabilidad cero.\n")
+cat("\nINTERPRETACIÓN\n")
+cat("Las frecuencias describen el historial; no predicen la próxima tirada.\n")
+cat("En el modelo justo e independiente: cada número tiene probabilidad 1/37;\n")
+cat("rojo y negro, 18/37 cada uno; el cero, 1/37.\n")
+cat("Que un número no aparezca en una ventana no significa que su probabilidad sea cero.\n")
