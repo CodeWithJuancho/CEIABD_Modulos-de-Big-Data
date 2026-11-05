@@ -31,7 +31,7 @@ escrituraDatos <- function(path, file, dataset){
 # que se ejecutan las funciones anteriores
 
 # se comienza leyendo un conjunto de datos en forma csv
-datos <- lecturaDatos("","/Users/jsanchez/r_examples/Data.csv")
+datos <- lecturaDatos("","Data.csv")
 
 # se visualiza el tipo de objeto devuelto por la operacion
 # de lectura de datos
