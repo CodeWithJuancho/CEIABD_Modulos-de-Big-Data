@@ -2,10 +2,10 @@ require(outliers)
 
 
 # se carga el archivo con las funcione de lectura de datos
-source("/Users/jsanchez/r_examples/R/lecturaDatos.R")
+source("D:/EjemplosR/lecturaDatos.R")
 
-path <- "/Users/jsanchez/r_examples/"
-file <- "Data.csv"
+path <- "D:/EjemplosR"
+file <- "../Data.csv"
 
 # lectura de los datos
 datos <- lecturaDatos(path,file)
