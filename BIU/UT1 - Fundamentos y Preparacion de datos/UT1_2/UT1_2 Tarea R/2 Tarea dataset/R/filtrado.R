@@ -1,9 +1,9 @@
 # se carga el archivo con las funcione de lectura de datos
-source("lecturaDatos.R")
+source("/home/bladimir/Desktop/proyecto_0/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset/R/lecturaDatos.R", chdir=TRUE)
 
 # se fija la ruta donde se encuentran los datos
-path <- ""
-file <- "Data.csv"
+path <- "/home/bladimir/Desktop/proyecto_0/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset"
+file <- "/Data.csv"
 
 # lectura de los datos
 datos <- lecturaDatos(path,file)

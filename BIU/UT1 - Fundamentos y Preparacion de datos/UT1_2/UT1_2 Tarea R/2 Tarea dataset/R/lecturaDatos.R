@@ -9,7 +9,7 @@ lecturaDatos <- function(path,file){
   pathCompleto <- paste(path,file,sep="")
   
   # se leen los datos
-  dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?"))
+  dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?", "X"))
   
   # se devuelve el conjunto de datos
   return(dataset)
@@ -31,7 +31,7 @@ escrituraDatos <- function(path, file, dataset){
 # que se ejecutan las funciones anteriores
 
 # se comienza leyendo un conjunto de datos en forma csv
-datos <- lecturaDatos("","Data.csv")
+datos <- lecturaDatos("/home/bladimir/Desktop/proyecto_0/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset/","Data.csv")
 
 # se visualiza el tipo de objeto devuelto por la operacion
 # de lectura de datos

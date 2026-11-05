@@ -2,15 +2,15 @@ require(outliers)
 
 
 # se carga el archivo con las funcione de lectura de datos
-source("D:/EjemplosR/lecturaDatos.R")
+source("/home/bladimir/Desktop/proyecto_0/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset/R/lecturaDatos.R", chdir=TRUE)
 
-path <- "D:/EjemplosR"
-file <- "../Data.csv"
+path <- "/home/bladimir/Desktop/proyecto_0/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset"
+file <- "/Data.csv"
 
 # lectura de los datos
 datos <- lecturaDatos(path,file)
 
-continuas       <- c(1,2,3,4,22,23,24,29,30,31,32,3,41,42,43,49)
+continuas       <- c(1,2,3,4,22,23,24,29,30,31,32,33,41,42,43,49)
 datos           <- datos_filtrados_imputados_mice[,continuas]
 # deteccion de anomalias para las variable 1 a 3. Observad 
 # que no tiene sentido considerar variables de tipo discreto

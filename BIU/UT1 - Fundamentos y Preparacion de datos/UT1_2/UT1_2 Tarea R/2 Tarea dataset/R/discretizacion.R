@@ -1,5 +1,5 @@
-require(discretization)
-require(mice)
+library(discretization)
+#library(mice)
 
 # se usa el conjunto de datos de calidad del aire, en las
 # mismas condiciones que vimos con anterioridad
