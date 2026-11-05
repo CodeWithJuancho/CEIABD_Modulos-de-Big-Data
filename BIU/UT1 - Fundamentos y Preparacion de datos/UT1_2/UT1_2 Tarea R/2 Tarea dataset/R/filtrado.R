@@ -2,7 +2,7 @@
 source("lecturaDatos.R")
 
 # se fija la ruta donde se encuentran los datos
-path <- ""
+path <- "~/bigdata/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset"
 file <- "Data.csv"
 
 # lectura de los datos

@@ -16,13 +16,26 @@ library(mvoutlier)
 
 
 ## Definición del Working Directory
-setwd("~/Desktop/JulioA/CURSOS/Curso_JJCC/BDA/GS-II/Ejemplos")
+setwd("~/bigdata/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset/R")
 
 ## Carga del conjunto de datos
 source("lecturaDatos.R")
 
 #Se observa el tipo de dato de los conjuntos de entrenamiento y prueba
 class(datos) #data.frame
+
+#Se averigüa que PredCN_r1_.3 #26 no es tipo integer
+discretas       <- c(5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,25,26,27,33,34,35,37,38,39,48,50)  
+sapply(datos[, discretas], is.integer)
+
+#Se comprueba su tipo
+class(datos[, 26])
+
+#Son char, se comprueba cuantos N/A hay
+sum(is.na(datos[, 26]))
+
+#Se fuerza a tipo integer y se descartan esas filas
+datos[, 26] <- as.integer(as.character(datos[, 26]))
 
 ######################################################################
 ##                  ESTUDIO PRELIMINAR DE LOS DATOS                 ## 
@@ -68,7 +81,7 @@ continuas <- c(1,2,3,4,22,23,24,29,30,31,32,41,42,43)
 boxplot(datos[,continuas], main = "Variables continuas")
 boxplot(datos[,discretas], main = "Variables discretas")
 discretas <- c(5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,25,26,27,33,34,35,37,38,39)
-boxplot(datos[,discretas], main = "Variables discretas")
+boxplot(datos[,discretas], main = "Variables discretas") # Boxplot no aplica a variables continuas, se cambia por barplot
 
 #Se vuelven a definir todas las variables continuas y discretas 
 #Variables Continuas
@@ -91,7 +104,7 @@ source("filtrado.R")
 #Imputación de Valores perdidos con Paquete Mice##
 ##################################################
 
-datos_filtrados <- lecturaDatos("","Data-filtered.csv")
+datos_filtrados <- lecturaDatos("~/bigdata/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset","Data-filtered.csv")
 patron <- md.pattern(datos_filtrados)
 print(patron)
 
@@ -100,8 +113,10 @@ X11()
 aggr_plot <- aggr(datos_filtrados, col = c("blue","red"),numbers = TRUE, sortVars = TRUE, labels = names(datos_filtrados), cex.axis = .7, gap = 3, ylab = c("Datos perdidos","Patron"))
 
 #Una vez obtenido el patrón, se consultan los datos completos e incompletos
-completos   <- ccn(datos_filtrados)
-incompletos <- icn(datos_filtrados)
+#completos   <- ccn(datos_filtrados)
+completos   <- sum(complete.cases(datos_filtrados))
+#incompletos <- icn(datos_filtrados)
+incompletos <- sum(!complete.cases(datos_filtrados))
 cat("Datos completos:",completos,"e incompletos",incompletos,"\n")
 
 #Se procede a la imputación
@@ -111,8 +126,11 @@ imputados_mice <- mice(datos)
 datos_filtrados_imputados_mice <- complete(imputados_mice)
 
 #Obtención del número de instancias con y sin datos perdidos en la parte ya limpia. 
-completos   <- ccn(datos_filtrados_imputados_mice)
-incompletos <- icn(datos_filtrados_imputados_mice)
+#completos   <- ccn(datos_filtrados_imputados_mice)
+completos   <- sum(complete.cases(datos_filtrados_imputados_mice))
+#incompletos <- icn(datos_filtrados_imputados_mice)
+incompletos <- sum(!complete.cases(datos_filtrados_imputados_mice))
+
 cat("Datos completos:",completos,"e incompletos",incompletos,"\n")
 
 #Visualización para ver si este método de imputación es bueno o no lo suficiente 
@@ -127,8 +145,11 @@ bwplot(imputados_mice)
 #¡OJO!: ¡Este método de imputación solo es válido para variables continuas!
 
 #Se obtienen los datos completos e incompletos pero solo para variables continuas
-completos_rob <- ccn(datos_filtrados[,continuas])
-incompletos_rob <- icn(datos_filtrados[,continuas])
+#completos_rob <- ccn(datos_filtrados[,continuas])
+completos   <- sum(complete.cases(datos_filtrados[,continuas]))
+#incompletos_rob <- icn(datos_filtrados[,continuas])
+
+incompletos <- sum(!complete.cases(datos_filtrados[,continuas]))
 cat("Datos Completos:",completos, " e incompletos", incompletos,"\n")
 
 #Imputación

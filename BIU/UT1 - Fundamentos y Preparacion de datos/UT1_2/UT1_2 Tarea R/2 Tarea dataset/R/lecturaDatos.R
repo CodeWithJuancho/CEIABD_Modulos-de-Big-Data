@@ -6,7 +6,7 @@
 # @param file archivo a leer
 lecturaDatos <- function(path,file){
   # se compone el path completo
-  pathCompleto <- paste(path,file,sep="")
+  pathCompleto <- paste(path,file,sep="/")
   
   # se leen los datos
   dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?"))
@@ -21,7 +21,7 @@ lecturaDatos <- function(path,file){
 # @param cdataset conjunto de datos a almacenar
 escrituraDatos <- function(path, file, dataset){
   # se compone el path completo
-  pathCompleto <- paste(path,file,sep="")
+  pathCompleto <- paste(path,file,sep="/")
   
   # se escribe el archivo
   write.csv(dataset, pathCompleto, row.names = FALSE)
@@ -31,7 +31,7 @@ escrituraDatos <- function(path, file, dataset){
 # que se ejecutan las funciones anteriores
 
 # se comienza leyendo un conjunto de datos en forma csv
-datos <- lecturaDatos("","Data.csv")
+datos <- lecturaDatos("~/bigdata/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset","Data.csv")
 
 # se visualiza el tipo de objeto devuelto por la operacion
 # de lectura de datos
