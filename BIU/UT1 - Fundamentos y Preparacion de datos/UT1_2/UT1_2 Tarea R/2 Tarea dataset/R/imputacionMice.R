@@ -11,8 +11,8 @@ datos[1:5,4] <- NA
 
 # se determina el numero de instancias sin datos perdidos y con datos
 # perdidos. A observar la comodidad de uso de las funciones ccn e icn
-completos <- ccn(datos)
-incompletos <- icn(datos)
+completos <- sum(complete.cases(datos))
+incompletos <- sum(!complete.cases(datos))
 cat("Datos completos: ",completos, " e incompletos: ",incompletos,"\n")
 
 # se realiza la imputacion
@@ -23,8 +23,8 @@ datosImputados <- complete(imputados)
 
 # se determina el numero de instancias sin datos perdidos y con datos
 # perdidos en la parte ya limpia
-completos <- ccn(datosImputados)
-incompletos <- icn(datosImputados)
+completos <- sum(complete.cases(datosImputados))
+incompletos <- sum(!complete.cases(datosImputados))
 cat("Datos completos: ",completos, " e incompletos: ",incompletos,"\n")
 
 # se muestra la imputacion para Ozone

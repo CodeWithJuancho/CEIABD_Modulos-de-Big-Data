@@ -16,10 +16,10 @@ library(mvoutlier)
 
 
 ## Definición del Working Directory
-setwd("~/Desktop/JulioA/CURSOS/Curso_JJCC/BDA/GS-II/Ejemplos")
+setwd("/home/Angel/Desktop/proyecto/CE_IABD_BIU_SPS/BIU/UT1 - Fundamentos y Preparacion de datos/UT1_2/UT1_2 Tarea R/2 Tarea dataset")
 
 ## Carga del conjunto de datos
-source("lecturaDatos.R")
+source("R/lecturaDatos.R")
 
 #Se observa el tipo de dato de los conjuntos de entrenamiento y prueba
 class(datos) #data.frame
@@ -83,7 +83,7 @@ discretas       <- c(5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,25,26,27,33,3
 
 #Se aplica el filtrado de instancias con cierto porcentaje de datos perdidos para descartar
 #instancias en que el porcentaje supera un cierto límite. 
-source("filtrado.R")
+source("R/filtrado.R")
 #La ejecución de este script genera el fichero UGR2016_tra_keel_filtered.csv, el cual contiene los datos filtrados
 # y será el fichero sobre el cual se trabajará a continuación para la imputación de valores perdidos. 
 
@@ -100,8 +100,8 @@ X11()
 aggr_plot <- aggr(datos_filtrados, col = c("blue","red"),numbers = TRUE, sortVars = TRUE, labels = names(datos_filtrados), cex.axis = .7, gap = 3, ylab = c("Datos perdidos","Patron"))
 
 #Una vez obtenido el patrón, se consultan los datos completos e incompletos
-completos   <- ccn(datos_filtrados)
-incompletos <- icn(datos_filtrados)
+completos   <- sum(complete.cases(datos_filtrados))
+incompletos <- sum(!complete.cases(datos_filtrados))
 cat("Datos completos:",completos,"e incompletos",incompletos,"\n")
 
 #Se procede a la imputación
@@ -111,8 +111,8 @@ imputados_mice <- mice(datos)
 datos_filtrados_imputados_mice <- complete(imputados_mice)
 
 #Obtención del número de instancias con y sin datos perdidos en la parte ya limpia. 
-completos   <- ccn(datos_filtrados_imputados_mice)
-incompletos <- icn(datos_filtrados_imputados_mice)
+completos   <- sum(complete.cases(datos_filtrados_imputados_mice))
+incompletos <- sum(!complete.cases(datos_filtrados_imputados_mice))
 cat("Datos completos:",completos,"e incompletos",incompletos,"\n")
 
 #Visualización para ver si este método de imputación es bueno o no lo suficiente 
@@ -127,12 +127,12 @@ bwplot(imputados_mice)
 #¡OJO!: ¡Este método de imputación solo es válido para variables continuas!
 
 #Se obtienen los datos completos e incompletos pero solo para variables continuas
-completos_rob <- ccn(datos_filtrados[,continuas])
-incompletos_rob <- icn(datos_filtrados[,continuas])
+completos_rob <- sum(complete.cases(datos_filtrados[,continuas]))
+incompletos_rob <- sum(complete.cases(datos_filtrados[,continuas]))
 cat("Datos Completos:",completos, " e incompletos", incompletos,"\n")
 
 #Imputación
-imputados_rob <- impKNNa(datosanoma_filtrados_imputados_mice[,continuas])
+imputados_rob <- impKNNa(datos_filtrados_imputados_mice[,continuas])
 plot(imputados_rob,which=3)
 
 ######################################################################
@@ -140,7 +140,7 @@ plot(imputados_rob,which=3)
 ######################################################################
 
 #Detección de datos anómalos con el paquete outliers
-source("anomalias.R")
+source("R/anomalias.R")
 #######QUÉ HACER CON LAS INSTANCIAS ANÓMALAS######
 
 #Detección de datos anómalos con el paquete mvoutlier
@@ -163,7 +163,7 @@ datosFinales <- datos_filtrados_imputados_mice[!resultados$outliers, ]
 ######################################################################
 
 
-source("transformacion.R") #Centrado y Escalado sobre el conjunto de datos
+source("R/transformacion.R") #Centrado y Escalado sobre el conjunto de datos
 #head(datosFinales)
 #Creamos un nuevo dataframe, con los valores centralizados de las variables continuas que aparecen en datos_centralizaos 
 #y las variables discretas
@@ -174,7 +174,7 @@ datosFinales <- data.frame(datosFinales_escalados,datos[,nominales])
 ######################################################################
 
 #Uso del Script de Discretizaci?n obteniendo 
-source("discretizacion.R")
+source("R/discretizacion.R")
 #Este script obtiene los data.frames
 #datosdiscretos_cm      --> Contiene los datos discretizados mediante el metodo caim
 #datosdiscretos_cmAmeva --> Contiene los datos discretizados mediante el metodo ameva
@@ -186,11 +186,11 @@ source("discretizacion.R")
 
 #Método best.first.search: No se puede hacer ya que la función de evaluación es válida solo para el conjunto de datos Iris del Script
 #Características seleccionadas por cfs
-source("fSelector-cfs.R")
+source("R/fSelector-cfs.R")
 #Caracteristicas seleccionadas por chisquared
-source("fSelector-chiSquared.R")
+source("R/fSelector-chiSquared.R")
 #Características seleccionadas por el método de Consistencias
-source("fSelector-consistency.R")
+source("R/fSelector-consistency.R")
 
 
 

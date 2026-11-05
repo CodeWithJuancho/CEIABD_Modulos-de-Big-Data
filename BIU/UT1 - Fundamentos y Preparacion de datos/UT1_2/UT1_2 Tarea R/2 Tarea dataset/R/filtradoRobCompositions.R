@@ -4,7 +4,7 @@ library(robCompositions)
 data(expenditures)
 
 # muestra un valor que se imputara, tras hacerlo NA
-otiginal <- expenditures[1,3]
+original <- expenditures[1,3]
 expenditures[1,3] <- NA
 
 # se hace la imputacion
