@@ -1,0 +1,25 @@
+library(FSelector)
+data(iris)
+
+# se obtienen las medidas mediante ganancia de informacion
+weights <- information.gain(Species~., iris)
+
+# se muestran los pesos y se seleccionan los mejores
+print(weights)
+subset <- cutoff.k(weights,2)
+f <- as.simple.formula(subset,"Species")
+print(f)
+
+# igual, pero con ganancia de informacion
+weights <- gain.ratio(Species~., iris)
+print(weights)
+subset <- cutoff.k(weights,2)
+f <- as.simple.formula(subset,"Species")
+print(f)
+
+# e igual con symmetrical.uncertainty
+weights <- symmetrical.uncertainty(Species~., iris)
+print(weights)
+subset <- cutoff.k(weights,2)
+f <- as.simple.formula(subset,"Species")
+print(f)

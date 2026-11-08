@@ -8,7 +8,10 @@
 >>>>>>> Stashed changes
 **/resolucion/
 **/not_yet/
+.DS_Store
+**/resolución/
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 >>>>>>> 863fb9bdc28bfbeedac8681df733c09fbf9c6210
 =======
@@ -18,3 +21,6 @@
 >>>>>>> Stashed changes
 
 
+=======
+.Rproj.user
+>>>>>>> b184000434c4d2bbeda075465f6bf8d70192ebea
