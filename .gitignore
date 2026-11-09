@@ -1,17 +1,10 @@
 # Gitignore files
 *.gh_token
-<<<<<<< HEAD
 .vscode/
-=======
 **/resolucion/
 **/not_yet/
 .DS_Store
 **/resolución/
-
-<<<<<<< HEAD
->>>>>>> 863fb9bdc28bfbeedac8681df733c09fbf9c6210
-
-
-=======
 .Rproj.user
->>>>>>> 1589ff146a66beed8441f866bd5760a758c5780c
+examen*
+*.txt
