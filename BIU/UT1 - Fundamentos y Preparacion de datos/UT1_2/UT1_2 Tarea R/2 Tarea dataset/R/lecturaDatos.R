@@ -4,9 +4,9 @@
 # los datos. Argumentos:
 # @param path ruta hasta el archivo de datos a leer
 # @param file archivo a leer
-lecturaDatos <- function(path,file){
+lecturaDatos <- function(path, file) {
   # se compone el path completo
-  pathCompleto <- paste(path,file,sep="")
+  pathCompleto <- file.path(path, file)
   
   # se leen los datos
   dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?"))
@@ -19,9 +19,9 @@ lecturaDatos <- function(path,file){
 # @param path ruta donde se quiere almacenar
 # @param file nombre del archivo donde almacenar los datos
 # @param cdataset conjunto de datos a almacenar
-escrituraDatos <- function(path, file, dataset){
+escrituraDatos <- function(path, file, dataset) {
   # se compone el path completo
-  pathCompleto <- paste(path,file,sep="")
+  pathCompleto <- paste(path, file)
   
   # se escribe el archivo
   write.csv(dataset, pathCompleto, row.names = FALSE)
@@ -31,9 +31,9 @@ escrituraDatos <- function(path, file, dataset){
 # que se ejecutan las funciones anteriores
 
 # se comienza leyendo un conjunto de datos en forma csv
-datos <- lecturaDatos("","Data.csv")
+
 
 # se visualiza el tipo de objeto devuelto por la operacion
 # de lectura de datos
-class(datos)
+
 
