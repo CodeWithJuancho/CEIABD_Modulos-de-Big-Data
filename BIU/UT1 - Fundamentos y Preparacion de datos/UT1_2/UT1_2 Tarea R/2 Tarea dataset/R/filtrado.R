@@ -1,5 +1,5 @@
 # se carga el archivo con las funcione de lectura de datos
-source("lecturaDatos.R")
+source("R/lecturaDatos.R")
 
 # se fija la ruta donde se encuentran los datos
 path <- ""

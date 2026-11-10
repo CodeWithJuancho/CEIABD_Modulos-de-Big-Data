@@ -1,16 +1,16 @@
 
-# funcion para lectura de archivo. En este script tambien se 
-# consideran opciones de analisis exploratorio preliminar de 
+# funcion para lectura de archivo. En este script tambien se
+# consideran opciones de analisis exploratorio preliminar de
 # los datos. Argumentos:
 # @param path ruta hasta el archivo de datos a leer
 # @param file archivo a leer
 lecturaDatos <- function(path,file){
   # se compone el path completo
   pathCompleto <- paste(path,file,sep="")
-  
+
   # se leen los datos
-  dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?"))
-  
+  dataset <- read.csv(pathCompleto,na.strings=c(".","NA","","?","X"))
+
   # se devuelve el conjunto de datos
   return(dataset)
 }
@@ -22,12 +22,12 @@ lecturaDatos <- function(path,file){
 escrituraDatos <- function(path, file, dataset){
   # se compone el path completo
   pathCompleto <- paste(path,file,sep="")
-  
+
   # se escribe el archivo
   write.csv(dataset, pathCompleto, row.names = FALSE)
 }
 
-# se incluyen aqui algunas sentencia para ver la forma en 
+# se incluyen aqui algunas sentencia para ver la forma en
 # que se ejecutan las funciones anteriores
 
 # se comienza leyendo un conjunto de datos en forma csv
