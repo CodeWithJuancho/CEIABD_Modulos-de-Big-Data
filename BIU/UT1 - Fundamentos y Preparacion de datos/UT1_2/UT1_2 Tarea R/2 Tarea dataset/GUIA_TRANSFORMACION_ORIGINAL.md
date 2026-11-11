@@ -1,14 +1,11 @@
-# Guía sencilla de `transformacion.R` · Versión original
-
-Archivo de referencia: `2 Tarea dataset/R/transformacion.R`, el que utilizará el alumnado.
-
-El archivo contiene errores: se explica qué pretende hacer cada bloque y qué gráficos deberían aparecer al hacerlo funcionar.
+# Guía sencilla de la Tarea R
 
 ## Qué contiene el dataset
 
-`Data.csv` tiene **20.000 filas, 50 variables de entrada y una columna `class`**. Hay **4.749 valores ausentes**, representados como `NA`. El comentario que indica 2.000 filas es incorrecto.
+`Data.csv` tiene **20.000 filas, 50 variables de entrada y una columna `class`**. Hay **4.749 valores ausentes**, representados como `NA`.
 
-Las columnas coinciden con datos para estudiar contactos entre aminoácidos. En esa representación, **una fila describe un par de aminoácidos de una proteína**. Es una interpretación respaldada por la [documentación científica](https://academic.oup.com/bioinformatics/article/28/19/2441/289358); falta confirmar el origen exacto de esta copia.
+Las columnas coinciden con datos para estudiar contactos entre aminoácidos. En esa representación, **una fila describe un par de aminoácidos de una proteína**. 
+Es una interpretación respaldada por la [documentación científica](https://academic.oup.com/bioinformatics/article/28/19/2441/289358)
 
 | Columnas | Lectura orientativa |
 |---|---|
@@ -33,8 +30,6 @@ Hay **13.976 etiquetas `negative` y 6.024 `positive`**. En algunas columnas apar
 
 `library()` carga los paquetes; `setwd()` fija la carpeta de trabajo; `source("lecturaDatos.R")` ejecuta el archivo que lee el CSV.
 
-**Revisen las rutas:** algunas corresponden a otro ordenador o a `r_examples`. Los CSV de esta tarea están un nivel por encima de `R/`.
-
 ## 2. Explorar los datos
 
 - `nrow()` y `ncol()`: número de filas y columnas.
@@ -55,7 +50,8 @@ El código llama cuatro veces a `boxplot()`:
 | 3. Discretas | Las columnas seleccionadas, incluidas `length` y `separation`. |
 | 4. Discretas | Las mismas, quitando esas dos columnas de escala mayor. |
 
-**Lectura:** horizontal = variables; vertical = valores. La línea de la caja es la mediana; la caja contiene la mitad central de los valores. Los puntos separados son posibles extremos, no errores confirmados.
+**Lectura:** horizontal = variables; vertical = valores. 
+La línea de la caja es la mediana; la caja contiene la mitad central de los valores. Los puntos separados son posibles extremos, no errores confirmados.
 
 Las discretas incluyen texto (`X`): sus boxplots pueden fallar hasta revisar la selección.
 
@@ -133,8 +129,6 @@ Si ejecutan mediante `source()`, envuelvan `xyplot()`, `densityplot()` y `bwplot
 ## 5. Probar otra imputación con robCompositions
 
 `impKNNa()` intenta completar valores utilizando observaciones parecidas.
-
-El objeto `datosanoma_filtrados_imputados_mice` no existe. Además, comparar métodos requiere partir de las mismas ausencias, no de datos ya imputados.
 
 ### Gráfico 10 · Diagrama ternario
 
