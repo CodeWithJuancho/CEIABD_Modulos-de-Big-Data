@@ -2,6 +2,10 @@
 *.gh_token
 **/resolucion/
 **/not_yet/
+.DS_Store
+**/resolución/
 
+.Rproj.user
 
-
+examen*
+*.txt
