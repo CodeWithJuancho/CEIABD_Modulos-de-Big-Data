@@ -43,7 +43,35 @@ def map_registro(linea: str) -> tuple[str, int]:
     Lee H/M del campo final. No deduzcas la categoría a partir del nombre.
     Pista: investiga rpartition y strip.
     """
+<<<<<<< HEAD
     raise NotImplementedError("Completa el parseo, la validación y Map")
+=======
+    # 1. Validar saltos de línea internos
+    if "\n" in linea or "\r" in linea:
+        raise ValueError("El registro contiene saltos de línea internos.")
+
+    # 2. Separar por la última coma
+    nombre_raw, sep, categoria_raw = linea.rpartition(",")
+
+    # 3. Comprobar que solo hay una coma
+    if sep != ",":
+        raise ValueError("El registro no contiene una única coma.")
+    if "," in nombre_raw:
+        raise ValueError("El registro contiene más de una coma.")
+
+    # 4. Limpiar espacios y validar campos
+    nombre = nombre_raw.strip()
+    categoria = categoria_raw.strip()
+
+    # 5. Validar nombre y categoría
+    if not nombre:
+        raise ValueError("El nombre está vacío.")
+    if categoria not in CATEGORIAS:
+        raise ValueError(f"Categoría inválida: {categoria}")
+
+    # 6. Emitir el par clave-valor (categoría, 1)
+    return (categoria, 1)
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Shuffle: agrupación sin perder repeticiones
@@ -54,7 +82,15 @@ def shuffle(pares: list[tuple[str, int]]) -> dict[str, list[int]]:
     Cada 1 debe conservarse, aunque otros valores sean iguales.
     Pista: defaultdict puede facilitar la creación de listas vacías.
     """
+<<<<<<< HEAD
     raise NotImplementedError("Completa la agrupación por clave")
+=======
+    grupos: dict[str, list[int]] = defaultdict(list)
+    for clave, valor in pares:
+        grupos[clave].append(valor)
+    return dict(grupos)  # Convertir a dict normal antes de devolver
+
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Reduce: cálculo por categoría
@@ -64,7 +100,19 @@ def reduce_categoria(clave: str, valores: list[int]) -> tuple[str, int]:
     TODO: escribe la acumulación de los valores y devuelve el par de salida.
     Pista: resuélvelo primero con un bucle. Después puedes compararlo con sum.
     """
+<<<<<<< HEAD
     raise NotImplementedError("Completa Reduce")
+=======
+    total = 0
+    for valor in valores:
+        total += valor
+
+    # Contraste con la función sum() para verificar la suma manual
+    assert total == sum(valores), "La suma manual no coincide con sum()"
+
+    return (clave, total)
+
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Coordinación de las fases
@@ -76,17 +124,59 @@ def ejecutar_mapreduce(ficheros: dict[str, str]) -> dict[str, int]:
     Los errores deben indicar fichero y número de línea, sin ignorarlos.
     Pista: splitlines, enumerate y los contratos de las funciones anteriores.
     """
+<<<<<<< HEAD
     raise NotImplementedError("Completa los bucles que coordinan MapReduce")
+=======
+    emisiones: list[tuple[str, int]] = []
+
+    # 1. Recorrer cada fichero y sus líneas
+    for nombre_fichero, contenido in ficheros.items():
+        for numero_linea, linea in enumerate(contenido.splitlines(), start=1):
+            try:
+                par = map_registro(linea)
+                emisiones.append(par)
+            except ValueError as e:
+                raise ValueError(f"Error en {nombre_fichero}, línea {numero_linea}: {e}")
+
+    # 2. Agrupar por clave
+    grupos = shuffle(emisiones)
+
+    # 3. Aplicar Reduce a cada grupo y construir el resultado
+    resultado: dict[str, int] = {}
+    for clave, valores in grupos.items():
+        categoria, total = reduce_categoria(clave, valores)
+        resultado[categoria] = total
+
+    return resultado
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Contraste secuencial
 def conteo_secuencial(ficheros: dict[str, str]) -> dict[str, int]:
+<<<<<<< HEAD
     """Cuenta directamente los registros H/M sin crear listas de emisiones.
 
     TODO: recorre y valida los datos. Actualiza un contador por categoría.
     Este recorrido permitirá contrastar tu resultado MapReduce.
     """
     raise NotImplementedError("Completa el conteo secuencial de referencia")
+=======
+    """Cuenta directamente los registros H/M sin crear listas de emisiones."""
+    contadores: dict[str, int] = {}  # <-- Debe crearse vacío dentro de la función
+
+    for nombre_fichero, contenido in ficheros.items():
+        for num_linea, linea in enumerate(contenido.splitlines(), start=1):
+            try:
+                categoria, _ = map_registro(linea)
+            except ValueError as err:
+                raise ValueError(
+                    f"Error en '{nombre_fichero}', línea {num_linea} ('{linea}'): {err}"
+                ) from err
+
+            contadores[categoria] = contadores.get(categoria, 0) + 1
+
+    return contadores
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Mostrar las fases y comprobar el resultado
@@ -98,9 +188,72 @@ def mostrar_demostracion() -> None:
     número de registros, emisiones y valores agrupados coincide con H + M.
     Calcula los conteos de H y M. Su suma debe ser igual a los 9 registros.
     """
+<<<<<<< HEAD
     raise NotImplementedError("Completa la demostración y las comprobaciones")
+=======
+    print("=== 1. FASE MAP (Emisiones por registro) ===")
+    emisiones: list[tuple[str, int]] = []
+    total_registros = 0
+
+    for nombre_fichero, contenido in FICHEROS.items():
+        for num_linea, linea in enumerate(contenido.splitlines(), start=1):
+            total_registros += 1
+            try:
+                par = map_registro(linea)
+                emisiones.append(par)
+                print(f"  [{nombre_fichero}:{num_linea}] '{linea}' -> {par}")
+            except ValueError as err:
+                raise ValueError(
+                    f"Error en '{nombre_fichero}', línea {num_linea} ('{linea}'): {err}"
+                ) from err
+
+    print("\n=== 2. FASE SHUFFLE (Agrupación por categoría) ===")
+    grupos = shuffle(emisiones)
+    for clave, valores in grupos.items():
+        print(f"  Grupo '{clave}': {valores}")
+
+    print("\n=== 3. FASE REDUCE (Resultados por categoría) ===")
+    resultado_traza: dict[str, int] = {}
+    for clave, valores in grupos.items():
+        par_reducido = reduce_categoria(clave, valores)
+        resultado_traza[par_reducido[0]] = par_reducido[1]
+        print(f"  Reduce '{clave}' -> {par_reducido}")
+
+    print("\n=== 4. COMPARACIÓN Y COMPROBACIONES ===")
+    resultado_mr = ejecutar_mapreduce(FICHEROS)
+    resultado_sec = conteo_secuencial(FICHEROS)
+
+    print(f"  Resultado MapReduce : {resultado_mr}")
+    print(f"  Resultado Secuencial: {resultado_sec}")
+
+    # Evidencias requeridas por el guion
+    total_valores_agrupados = sum(len(v) for v in grupos.values())
+    conteo_h = resultado_mr.get("H", 0)
+    conteo_m = resultado_mr.get("M", 0)
+    suma_hm = conteo_h + conteo_m
+
+    assert len(emisiones) == 9, "Debe haber exactamente 9 emisiones Map."
+    assert len(grupos) == 2, "Debe haber exactamente 2 grupos (H y M)."
+    assert resultado_mr == resultado_traza == resultado_sec, (
+        "Los resultados de MapReduce y el conteo secuencial no coinciden."
+    )
+    assert total_registros == len(emisiones) == total_valores_agrupados == suma_hm == 9, (
+        "Se ha perdido algún registro durante el proceso."
+    )
+
+    print(
+        f"  Comprobación OK: Registros ({total_registros}) == "
+        f"Emisiones ({len(emisiones)}) == Valores agrupados ({total_valores_agrupados}) == "
+        f"H + M ({conteo_h} + {conteo_m} = {suma_hm})."
+    )
+>>>>>>> a5fec2b (WIP on master)
 
 
 # %% Ejecutar tu demostración
 if __name__ == "__main__":
     mostrar_demostracion()
+<<<<<<< HEAD
+=======
+
+# %%
+>>>>>>> a5fec2b (WIP on master)
