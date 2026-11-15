@@ -1,9 +1,13 @@
 require(discretization)
 <<<<<<< HEAD
+<<<<<<< HEAD
 require(mice)
 =======
 
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+
+>>>>>>> origin/alumno/DanielGlez
 
 # se usa el conjunto de datos de calidad del aire, en las
 # mismas condiciones que vimos con anterioridad

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 require(outliers)
 
 
@@ -24,6 +25,8 @@ print(anomalos)
 
  
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Cargar la librería necesaria para la función outlier()
 require(outliers)
 
@@ -47,5 +50,8 @@ anomalos <- outlier(datos_continuas)
 print(anomalos)
 
  
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
  

@@ -32,10 +32,14 @@ escrituraDatos <- function(path, file, dataset){
 
 # se comienza leyendo un conjunto de datos en forma csv
 <<<<<<< HEAD
+<<<<<<< HEAD
 datos <- lecturaDatos("","Data.csv")
 =======
 datos <- lecturaDatos("","../Data.csv")
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+datos <- lecturaDatos("","../Data.csv")
+>>>>>>> origin/alumno/DanielGlez
 
 # se visualiza el tipo de objeto devuelto por la operacion
 # de lectura de datos

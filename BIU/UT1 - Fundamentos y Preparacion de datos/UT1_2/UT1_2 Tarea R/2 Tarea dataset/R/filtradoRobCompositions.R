@@ -1,17 +1,24 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 library(robCompositions)
 
 =======
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 # carga el conjunto de datos
 data(expenditures)
 
 # muestra un valor que se imputara, tras hacerlo NA
 <<<<<<< HEAD
+<<<<<<< HEAD
 otiginal <- expenditures[1,3]
 =======
 original <- expenditures[1,3]
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+original <- expenditures[1,3]
+>>>>>>> origin/alumno/DanielGlez
 expenditures[1,3] <- NA
 
 # se hace la imputacion

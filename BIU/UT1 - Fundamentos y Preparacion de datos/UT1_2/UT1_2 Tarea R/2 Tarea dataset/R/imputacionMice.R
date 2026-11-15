@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Este paquete puede usarse para imputar valores perdidos en
 # variables de todo tipo
 require(mice)
@@ -41,6 +42,8 @@ densityplot(imputados)
 
 # Se muestran los diagramas de caja para las imputaciones
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Este paquete puede usarse para imputar valores perdidos en variables de todo tipo
 require(mice)
 require(lattice) # Necesario para xyplot, densityplot y bwplot
@@ -75,5 +78,8 @@ imputados$imp$Ozone
 # Graficos de diagnostico
 xyplot(imputados, Ozone ~ Wind + Temp + Solar.R, pch = 18, cex = 1)
 densityplot(imputados)
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 bwplot(imputados)

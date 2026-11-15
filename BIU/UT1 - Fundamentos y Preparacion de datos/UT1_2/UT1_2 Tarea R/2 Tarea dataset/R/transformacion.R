@@ -1,23 +1,30 @@
 ##########################################################################################################################
 ####                       CURSO DE ESPECIALIZACIÓN EN INTELIGENCIA ARTIFICIAL Y BIG DATA                             ####    
 <<<<<<< HEAD
+<<<<<<< HEAD
 ####                                          BIG DATA APLICADO                                                       ####    
 ####                            ALMACENES DE DATOS - Proceso ETL - Transformación                                     ####    
 ##########################################################################################################################
 
 #Carga de las librerías que se usarán a lo largo del Script
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 ####                                           BIG DATA APLICADO                                                      ####    
 ####                             ALMACENES DE DATOS - Proceso ETL - Transformación                                     ####    
 ##########################################################################################################################
 
 # Carga de las librerías necesarias
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 library(Hmisc)
 library(describer)
 library(fBasics)
 library(mice)
 library(VIM)
+<<<<<<< HEAD
 <<<<<<< HEAD
 library(robCompositions) # No disponible para todas las versiones de R
 library(outliers)
@@ -27,6 +34,8 @@ library(mvoutlier)
 ## Definición del Working Directory
 setwd("~/Desktop/JulioA/CURSOS/Curso_JJCC/BDA/GS-II/Ejemplos")
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 library(robCompositions)
 library(outliers)
 library(mvoutlier)
@@ -43,11 +52,15 @@ tryCatch({
   # Si falla o se corre fuera de RStudio, usa el directorio de trabajo donde se lanzó R
   cat("Directorio de trabajo actual:", getwd(), "\n")
 })
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 
 ## Carga del conjunto de datos
 source("lecturaDatos.R")
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Se observa el tipo de dato de los conjuntos de entrenamiento y prueba
 class(datos) #data.frame
@@ -105,6 +118,8 @@ continuas       <- c(1,2,3,4,22,23,24,29,30,31,32,41,42,43,49)
 discretas       <- c(5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,25,26,27,33,34,35,37,38,39,48,50)
 
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Se observa el tipo de dato de los conjuntos
 class(datos) # data.frame
 
@@ -151,12 +166,16 @@ boxplot(datos[, discretas_sub], main = "Variables discretas (subconjunto)")
 # Restaurar vectores completos
 continuas <- c(1, 2, 3, 4, 22, 23, 24, 29, 30, 31, 32, 41, 42, 43, 49)
 discretas <- c(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25, 26, 27, 33, 34, 35, 37, 38, 39, 48, 50)
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 
 ######################################################################
 ##                  IMPUTACIÓN DE VALORES PERDIDOS                  ## 
 ######################################################################
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Se aplica el filtrado de instancias con cierto porcentaje de datos perdidos para descartar
 #instancias en que el porcentaje supera un cierto límite. 
@@ -195,6 +214,8 @@ cat("Datos completos:",completos,"e incompletos",incompletos,"\n")
 #Visualización para ver si este método de imputación es bueno o no lo suficiente 
 xyplot(imputados_mice, class ~ datos$AA_freq_central_G + datos$AA_freq_central_M + datos$AA_freq_central_Y , pch = 18, cex=1)
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Filtrado de instancias con alto porcentaje de datos perdidos
 source("filtrado.R")
 
@@ -230,11 +251,15 @@ cat("Datos completos post-MICE:", completos_post, "e incompletos post-MICE:", in
 # Diagnósticos gráficos
 # (Nota: Verifica que las variables de la fórmula existan en tu dataset o sustitúyelas)
 try(xyplot(imputados_mice, class ~ AA_freq_central_G + AA_freq_central_M + AA_freq_central_Y, pch = 18, cex = 1))
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 densityplot(imputados_mice)
 bwplot(imputados_mice)
 
 #############################################################
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Imputación de Valores perdidos con Paquete robCompositions##
 #############################################################
@@ -250,6 +275,8 @@ cat("Datos Completos:",completos, " e incompletos", incompletos,"\n")
 imputados_rob <- impKNNa(datosanoma_filtrados_imputados_mice[,continuas])
 plot(imputados_rob,which=3)
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Imputación de Valores perdidos con Paquete robCompositions
 #############################################################
 
@@ -263,12 +290,16 @@ imputados_rob <- impKNNa(datos_filtrados_imputados_mice[, continuas])
 
 # Gráfico ternario con las 3 primeras variables continuas para evitar el Warning
 plot(imputados_rob, which = 3, parts = 1:3)
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 
 ######################################################################
 ##                    DETECCIÓN DE DATOS ANÓMALOS                   ## 
 ######################################################################
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Detección de datos anómalos con el paquete outliers
 source("anomalias.R")
@@ -288,6 +319,8 @@ print(resultados$outliers)
 
 # seleccion de instancias sin anomalias
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Detección con paquete outliers
 source("anomalias.R")
 
@@ -296,13 +329,17 @@ resultados <- uni.plot(datos_filtrados_imputados_mice[, 1:10])
 print(resultados$outliers)
 
 # Selección de instancias sin anomalías
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 datosFinales <- datos_filtrados_imputados_mice[!resultados$outliers, ]
 
 ######################################################################
 ##                         TRANSFORMACIÓN                           ## 
 ######################################################################
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 source("transformacion.R") #Centrado y Escalado sobre el conjunto de datos
@@ -311,6 +348,8 @@ source("transformacion.R") #Centrado y Escalado sobre el conjunto de datos
 #y las variables discretas
 datosFinales <- data.frame(datosFinales_escalados,datos[,nominales])
 =======
+=======
+>>>>>>> origin/alumno/DanielGlez
 # Centrado y escalado
 source("transformacion.R")
 
@@ -319,12 +358,16 @@ source("transformacion.R")
 if (exists("datosFinales_escalados")) {
   datosFinales <- data.frame(datosFinales_escalados, datos[!resultados$outliers, nominales])
 }
+<<<<<<< HEAD
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+>>>>>>> origin/alumno/DanielGlez
 
 ######################################################################
 ##                         DISCRETIZACIÓN                           ## 
 ######################################################################
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Uso del Script de Discretizaci?n obteniendo 
 source("discretizacion.R")
@@ -336,11 +379,16 @@ source("discretizacion.R")
 source("discretizacion.R")
 # Genera: datosdiscretos_cm, datosdiscretos_cmAmeva, datosdicretos_cmCacc
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+source("discretizacion.R")
+# Genera: datosdiscretos_cm, datosdiscretos_cmAmeva, datosdicretos_cmCacc
+>>>>>>> origin/alumno/DanielGlez
 
 ######################################################################
 ##                  SELECCIÓN DE CARACTERÍSTICAS                    ## 
 ######################################################################
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #Método best.first.search: No se puede hacer ya que la función de evaluación es válida solo para el conjunto de datos Iris del Script
 #Características seleccionadas por cfs
@@ -359,3 +407,9 @@ source("fSelector-cfs.R")
 source("fSelector-chiSquared.R")
 source("fSelector-consistency.R")
 >>>>>>> 34d5046 (Ejercicios mapreduce en proceso)
+=======
+# Métodos de FSelector
+source("fSelector-cfs.R")
+source("fSelector-chiSquared.R")
+source("fSelector-consistency.R")
+>>>>>>> origin/alumno/DanielGlez
