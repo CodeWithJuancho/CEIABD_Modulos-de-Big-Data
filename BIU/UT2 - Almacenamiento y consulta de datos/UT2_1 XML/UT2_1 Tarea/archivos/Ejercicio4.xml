@@ -4,7 +4,16 @@
 <!-- ********************************************** -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
 <!-- Externa -->
-<!DOCTYPE factura SYSTEM ...>
+<!DOCTYPE factura SYSTEM "factura.dtd">
+  <! elemento factura (emisor, receptor, fecha, lineas, resumen, pago)>
+  <! elemento emisor (nombre, direccion, identificacion_fiscal, email, telefono)>
+  <! elemento direccion (calle, codigo_postal, poblacion, provincia, pais)>
+  <! elemento receptor (nombre, id_fiscal, telefono)>
+  <! elemento lineas (linea+)>
+  <! elemento linea (concepto, descripcion, precio_unitario, unidades, subtotal, iva_porcentaje, total)>
+  <! elemento resumen (base_imponible, iva_porcentaje, cuota_iva, total)>
+  <! elemento pago (iban)>
+  
 <!-- Interna -->
 <!DOCTYPE factura []>
 <!-- ********************************************** -->

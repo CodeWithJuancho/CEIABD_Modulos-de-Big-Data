@@ -14,7 +14,22 @@ Este fichero no siempre est disponible.
 	- En el reparto deberá aparecer un actor como mínimo.  -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
 <!-- Externa -->
-<!DOCTYPE cartelera SYSTEM ...>
+<!DOCTYPE cartelera SYSTEM "cartelera.dtd">
+	<! elemento cartelera (pelicula+)>
+	<! elemento pelicula (titulo, titulo_original?, nacionalidad, genero, clasificacion?, sinopsis, director, reparto, web?, cartel?)>
+	<! elemento titulo (#PCDATA)>
+	<! elemento titulo_original (#PCDATA)>
+	<! elemento nacionalidad (#PCDATA)>
+	<! elemento genero (#PCDATA)>
+	<! elemento clasificacion EMPTY>
+	<! atributo clasificacion edad (tp|8|12|16|18) #REQUIRED>
+	<! elemento sinopsis (#PCDATA)>
+	<! elemento director (#PCDATA)>
+	<! elemento reparto (actor+)>
+	<! elemento actor (#PCDATA)>
+	<! elemento web (#PCDATA)>
+	<! elemento cartel (#PCDATA)>
+	
 <!-- Interna -->
 <!DOCTYPE cartelera []>
 <!-- *************************************************** -->

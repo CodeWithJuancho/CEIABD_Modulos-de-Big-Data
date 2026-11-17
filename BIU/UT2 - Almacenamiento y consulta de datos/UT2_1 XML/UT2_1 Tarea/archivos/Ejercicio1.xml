@@ -15,7 +15,26 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 <!-- ********************************************** -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
 <!-- Externa -->
-<!DOCTYPE factura SYSTEM ...>
+<!DOCTYPE factura SYSTEM "factura.dtd">
+	<! elemento factura (datos_empresa, datos_cliente, datos_factura)>
+	<! elemento datos_empresa (nombre, dir, poblacion, provincia, cif, telefono?, fax?)>
+	<! elemento datos_cliente (nombre, dir_env, poblacion, provincia)>
+	<! elemento datos_factura (fecha, linea+, base, cuota_iva, total)>
+	<! elemento linea (ref, desc, cant, precio, importe)>
+	<! elemento nombre (#PCDATA)>
+	<! elemento dir (#PCDATA)>
+	<! elemento dir_env (#PCDATA)>
+	<! elemento poblacion (#PCDATA)>
+	<! elemento provincia (#PCDATA)>
+	<! elemento cif (#PCDATA)>
+	<! elemento telefono (#PCDATA)>
+	<! elemento fax (#PCDATA)>
+	<! elemento fecha (#PCDATA)>
+	<! elemento ref (#PCDATA)>
+	<! elemento desc (#PCDATA)>
+	<! elemento cant (#PCDATA)>
+	<! elemento precio (#PCDATA)>
+	<! elemento importe (#PCDATA)>			
 <!-- Interna -->
 <!DOCTYPE factura []>
 <!-- ********************************************** -->
