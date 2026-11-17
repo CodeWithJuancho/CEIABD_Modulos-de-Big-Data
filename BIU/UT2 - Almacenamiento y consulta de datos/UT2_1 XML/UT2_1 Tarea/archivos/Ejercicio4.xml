@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************** -->
+<!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
+<!-- Externa -->
+<!DOCTYPE factura SYSTEM ...>
+<!-- Interna -->
+<!DOCTYPE factura []>
+<!-- ********************************************** -->
+<!-- La fecha usa AAAA-MM-DD y los importes usan punto decimal. -->
+<factura numero="T190030" tipo="simplificada" moneda="euro">
+  <emisor>
+    <nombre>Holded SA</nombre>
+    <direccion>
+      <calle>Joan de Borbó, 101</calle>
+      <codigo_postal>08001</codigo_postal>
+      <poblacion>Barcelona</poblacion>
+      <provincia>Barcelona</provincia>
+      <pais>España</pais>
+    </direccion>
+    <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+    <email>aldo.solanas@holded.com</email>
+    <telefono>932 710 167</telefono>
+  </emisor>
+
+  <receptor>
+    <nombre>Holded Technologies</nombre>
+    <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
+    <telefono>932 710 167</telefono>
+  </receptor>
+
+  <fecha>2019-09-25</fecha>
+
+  <lineas>
+    <linea>
+      <concepto>Gafas sol</concepto>
+      <descripcion>Warfare</descripcion>
+      <precio_unitario>90.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>90.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>108.90</total>
+    </linea>
+    <linea>
+      <concepto>VANS bambas</concepto>
+      <descripcion>bamba de color negro old school</descripcion>
+      <precio_unitario>70.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>70.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>84.70</total>
+    </linea>
+    <linea>
+      <concepto>beanie</concepto>
+      <descripcion>Talla M</descripcion>
+      <precio_unitario>25.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>25.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>30.25</total>
+    </linea>
+    <linea>
+      <concepto>tabla de surf</concepto>
+      <descripcion>Modelo 6.3</descripcion>
+      <precio_unitario>356.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>356.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>430.76</total>
+    </linea>
+    <linea>
+      <concepto>camiseta nike</concepto>
+      <descripcion>Negra L</descripcion>
+      <precio_unitario>22.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>22.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>26.62</total>
+    </linea>
+    <linea>
+      <concepto>camiseta nike</concepto>
+      <descripcion>Blanca XL</descripcion>
+      <precio_unitario>22.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>22.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>26.62</total>
+    </linea>
+    <linea>
+      <concepto>Guantes</concepto>
+      <descripcion>Piel reforzada / negro</descripcion>
+      <precio_unitario>12.00</precio_unitario>
+      <unidades>1</unidades>
+      <subtotal>12.00</subtotal>
+      <iva_porcentaje>21</iva_porcentaje>
+      <total>14.52</total>
+    </linea>
+  </lineas>
+
+  <resumen>
+    <base_imponible>597.00</base_imponible>
+    <iva_porcentaje>21</iva_porcentaje>
+    <cuota_iva>125.37</cuota_iva>
+    <total>722.37</total>
+  </resumen>
+
+  <pago metodo="transferencia">
+    <iban>ES66210064184012345679</iban>
+  </pago>
+</factura>

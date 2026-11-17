@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!-- ENUNCIADO -->
+<!-- Para el esquema que se muestra en la figura de la carpeta donde se encuentra este documento,
+realizar las siguientes tareas: 
+  - Proporcionar una DTD que refleje esta jerarqu�a suponiendo que nacimiento es un elemento
+opcional y hay al menos una dirección. 
+  - Generar un fichero XML que referencie al DTD (de manera interna y externa) y contenga dos
+elementos persona.  -->
+<!-- ********************************************** -->
+<!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
+ <!-- Externa -->
+<!DOCTYPE personas SYSTEM ...>
+<!-- Interna -->
+<!DOCTYPE personas []>
+<!-- ********************************************** -->
+<personas>
+   <persona>
+      <nombre>Juan</nombre>
+      <apellidos>Pardo</apellidos>
+      <nacimiento dia="10" mes="Abril" anio="1982" />
+      <direccion>
+         <calle>Caoba, 1</calle>
+         <poblacion>Madrid</poblacion>
+         <provincia>Madrid</provincia>
+         <cpostal>28005</cpostal>
+      </direccion>
+      <varon />
+   </persona>
+   <persona>
+      <nombre>María</nombre>
+      <apellidos>López</apellidos>
+      <direccion>
+         <calle>Roncato, 1</calle>
+         <poblacion>Illescas</poblacion>
+         <provincia>Toledo</provincia>
+         <cpostal>45200</cpostal>
+      </direccion>
+      <direccion>
+         <calle>Paseo de la Esperanza, 15 - 1� A</calle>
+         <poblacion>Madrid</poblacion>
+         <provincia>Madrid</provincia>
+         <cpostal>28005</cpostal>
+      </direccion>
+      <hembra />
+   </persona>
+</personas>
