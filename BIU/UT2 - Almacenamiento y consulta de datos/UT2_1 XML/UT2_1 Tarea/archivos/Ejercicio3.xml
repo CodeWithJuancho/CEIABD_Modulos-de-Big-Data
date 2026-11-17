@@ -8,10 +8,35 @@ opcional y hay al menos una dirección.
 elementos persona.  -->
 <!-- ********************************************** -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
- <!-- Externa -->
-<!DOCTYPE personas SYSTEM ...>
+
 <!-- Interna -->
-<!DOCTYPE personas []>
+<!DOCTYPE personas [
+
+<!ELEMENT personas (persona+)>
+<!ELEMENT persona (nombre, apellidos, nacimiento?, direccion+, (varon | hembra))>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+
+<!ELEMENT nacimiento EMPTY>
+<!ATTLIST nacimiento 
+   dia  CDATA #REQUIRED
+   mes  CDATA #REQUIRED
+   anio CDATA #REQUIRED
+>
+<!ELEMENT direccion (calle, poblacion, provincia,cpostal)>
+<!ELEMENT calle (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT cpostal (#PCDATA)>
+
+<!ELEMENT varon EMPTY>
+<!ELEMENT hembra EMPTY>
+
+
+
+
+]>
 <!-- ********************************************** -->
 <personas>
    <persona>
