@@ -66,3 +66,11 @@ Force push
 ### Pull from origin when your HEAD has diverged 
     
     git pull --no-rebase origin {branch_name}
+
+### Stash specific file from staged changes
+    
+    git stash push -m {stash_name} path/to/file
+
+### Return stashed changes
+    
+    git stash pop
