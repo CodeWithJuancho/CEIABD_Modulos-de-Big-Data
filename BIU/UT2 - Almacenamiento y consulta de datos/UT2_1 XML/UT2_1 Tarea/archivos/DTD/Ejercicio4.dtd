@@ -1,0 +1,35 @@
+<!ELEMENT factura (emisor, receptor, fecha, lineas, resumen, pago)>
+<!ATTLIST factura 
+numero ID #REQUIRED
+tipo CDATA #REQUIRED
+moneda CDATA #REQUIRED>
+<!ELEMENT emisor (nombre, direccion, identificacion_fiscal, email, telefono)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT direccion (calle, codigo_postal, poblacion, provincia, pais)>
+<!ELEMENT calle (#PCDATA)>
+<!ELEMENT codigo_postal (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT identificacion_fiscal (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT receptor (nombre, identificacion_fiscal, telefono)>
+<!ELEMENT fecha (#PCDATA)>
+<!ELEMENT lineas (linea+)>
+<!ELEMENT linea (concepto, descripcion, precio_unitario, unidades, subtotal, iva_porcentaje, total)>
+<!ELEMENT concepto (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT precio_unitario (#PCDATA)>
+<!ELEMENT unidades (#PCDATA)>
+<!ELEMENT subtotal (#PCDATA)>
+<!ELEMENT iva_porcentaje (#PCDATA)>
+<!ELEMENT total (#PCDATA)>
+<!ELEMENT resumen (base_imponible, iva_porcentaje, cuota_iva, total)>
+<!ELEMENT base_imponible (#PCDATA)>
+<!ELEMENT cuota_iva (#PCDATA)>
+<!ELEMENT pago (iban)>
+<!ATTLIST pago
+identificador ID #REQUIRED
+metodo CDATA #REQUIRED>
+<!ELEMENT iban (#PCDATA)>
