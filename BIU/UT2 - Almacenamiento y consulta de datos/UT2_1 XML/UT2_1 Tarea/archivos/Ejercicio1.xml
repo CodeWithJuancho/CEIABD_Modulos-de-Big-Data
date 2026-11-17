@@ -15,7 +15,7 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 <!-- ********************************************** -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
 <!-- Externa -->
-<!DOCTYPE factura SYSTEM ...>
+<!-- DOCTYPE factura SYSTEM ... -->
 <!-- Interna -->
 <!DOCTYPE factura []>
 <!-- ********************************************** -->
