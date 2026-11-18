@@ -1,15 +1,20 @@
 # Gitignore files
 *.gh_token
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 .vscode/
 =======
 =======
 >>>>>>> Stashed changes
+=======
+.vscode/
+>>>>>>> 81dc0fb2bb14cec5179633858044cedcccd0fcb8
 **/resolucion/
 **/not_yet/
 .DS_Store
 **/resolución/
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< Updated upstream
@@ -26,7 +31,12 @@
 <<<<<<< HEAD
 >>>>>>> b184000434c4d2bbeda075465f6bf8d70192ebea
 =======
+.Rproj.user
+<<<<<<< HEAD
+>>>>>>> 81dc0fb2bb14cec5179633858044cedcccd0fcb8
+=======
 
+>>>>>>> 43f7cf2a27d52491ad8f4ea4854e5882d730f6b3
 examen*
 *.txt
 >>>>>>> ce2c272d606e11a78af9a0c851ee5eb46d286049
