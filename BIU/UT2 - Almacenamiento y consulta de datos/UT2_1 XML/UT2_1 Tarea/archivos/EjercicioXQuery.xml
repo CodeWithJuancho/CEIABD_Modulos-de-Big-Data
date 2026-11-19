@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Dado el siguiente fragmento XML -->
+<bib>
+    <libro ano="1994">
+        <titulo>TCP/IP Illustrated</titulo>
+        <autor>
+            <apellido>Stevens</apellido>
+            <nombre>W.</nombre>
+        </autor>
+        <editorial>Addison-Wesley</editorial>
+        <precio> 65.95</precio>
+    </libro>
+    <libro ano="1992">
+        <titulo>Advan Programming for Unix environment</titulo>
+        <autor>
+            <apellido>Stevens</apellido>
+            <nombre>W.</nombre>
+        </autor>
+        <editorial>Addison-Wesley</editorial>
+        <precio>65.95</precio>
+    </libro>
+    <libro ano="2000">
+        <titulo>Data on the Web</titulo>
+        <autor>
+            <apellido>Abiteboul</apellido>
+            <nombre>Serge</nombre>
+        </autor>
+        <autor>
+            <apellido>Buneman</apellido>
+            <nombre>Peter</nombre>
+        </autor>
+        <autor>
+            <apellido>Suciu</apellido>
+            <nombre>Dan</nombre>
+        </autor>
+        <editorial>Morgan Kaufmann editorials</editorial>
+        <precio>39.95</precio>
+    </libro>
+    <libro ano="1999">
+        <titulo> Economics of Technology for Digital TV</titulo>
+        <editor>
+            <apellido>Gerbarg</apellido>
+            <nombre>Darcy</nombre>
+            <afiliacion>CITI</afiliacion>
+        </editor>
+        <editorial>Kluwer Academic editorials</editorial>
+        <precio>129.95</precio>
+    </libro>
+</bib>
+
+<!-- 1 Libros con precio superior a cincuenta euros -->
+<!-- Creen una consulta XQuery para recuperar todos los libros cuyo precio sea mayor que cincuenta
+euros. Muestren los resultados ordenados por precio. -->
+
+
+<!-- 2 Libros con varios autores -->
+<!-- Creen una consulta XQuery para recuperar todos los libros que hayan sido escritos por más de un
+autor. Muestren los resultados ordenados por el año de publicación del libro. -->
+
+
+<!-- 3 Libros de una editorial -->
+<!-- Creen una consulta XQuery para mostrar todos los libros de la editorial Morgan Kaufmann. -->
+
+
+<!-- 4 Libros y autores -->
+<!-- Creen una consulta XQuery para mostrar todos los libros y sus autores. Si un libro tiene más de
+un autor, muestren el primero de ellos seguido de «y otros». -->
+
+
+<!-- 5 Libros de programación -->
+<!-- Creen una consulta XQuery para mostrar todos los libros de programación, es decir, aquellos que
+contengan la palabra «programming» en su título. -->
