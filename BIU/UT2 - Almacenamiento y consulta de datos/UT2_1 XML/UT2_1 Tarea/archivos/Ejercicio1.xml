@@ -17,7 +17,7 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 <!-- Externa -->
 <!-- <!DOCTYPE factura SYSTEM ...> -->
 <!-- Interna -->
-<!DOCTYPE factura [
+<!-- <!DOCTYPE factura [
 <!ELEMENT factura (datos_empresa, datos_cliente, datos_factura)>
 <!ATTLIST factura n_fac ID #REQUIRED>
 <!ELEMENT datos_empresa (nombre, dir, poblacion, provincia, cif, telefono?, fax?)>
@@ -46,9 +46,13 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 <!ELEMENT base (#PCDATA)>
 <!ELEMENT cuota_iva (#PCDATA)>
 <!ELEMENT total (#PCDATA)>
-]>
+]> -->
 <!-- ********************************************** -->
-<factura n_fac="f999">
+<factura
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="Ejercicio1.xsd"
+
+	n_fac="f999"	>
 	<datos_empresa>
 		<nombre>Equipos Digitales S.L.</nombre>
 		<dir>Av. Valladolid</dir>
@@ -66,37 +70,37 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 	</datos_cliente>
 
 	<datos_factura n_ped="p731" iva="16" f_pago="efectivo" moneda="euro">
-		<fecha>12-01-2005</fecha>
+		<fecha>2005-01-12</fecha>
 		<linea>
 			<ref>MII93000F/8</ref>
 			<desc>MICRO PENTIUM IV 3000MHZ FB800</desc>
 			<cant>1</cant>
 			<precio>230</precio>
-			<importe>266,80</importe>
+			<importe>266.80</importe>
 		</linea>
 		<linea>
 			<ref>MB8QDIP4</ref>
 			<desc>PLACA BASE QDI P4</desc>
 			<cant>1</cant>
 			<precio>180</precio>
-			<importe>208,80</importe>
+			<importe>208.80</importe>
 		</linea>
 		<linea>
 			<ref>MEDD512M32</ref>
 			<desc>DIMM DDR 512MB 3200</desc>
 			<cant>2</cant>
 			<precio>40</precio>
-			<importe>92,80</importe>
+			<importe>92.80</importe>
 		</linea>
 		<linea>
 			<ref>HD250GSA7</ref>
 			<desc>DISCO DURO 250GB S-ATA 7200</desc>
 			<cant>4</cant>
 			<precio>120</precio>
-			<importe>556,80</importe>
+			<importe>556.80</importe>
 		</linea>
-		<base>970,00</base>
-		<cuota_iva>155,20</cuota_iva>
-		<total>1125,20</total>
+		<base>970.00</base>
+		<cuota_iva>155.20</cuota_iva>
+		<total>1125.20</total>
 	</datos_factura>
 </factura>
