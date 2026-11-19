@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ENUNCIADO -->
-<!-- Termina de generar el archivo XML a partir de la imagen de los docomuentos de ejercicios propuestos  -->
-<!-- ********************************************** -->
-<!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
-<!-- Interna -->
-<!DOCTYPE factura [
+<!DOCTYPE facturas [
+	<!ELEMENT facturas (factura+)>
+
 	<!ELEMENT factura (emisor, receptor, fecha, lineas, resumen, pago)>
 	<!ATTLIST factura
 		numero ID #REQUIRED
@@ -50,110 +47,335 @@
 ]>
 <!-- ********************************************** -->
 
-<!-- TODO: Añadir los identificadores de la factura, "numero", "tipo" y "moneda" -->
-<factura numero="f190030" tipo="simplificada" moneda="euro">
-  <!-- TODO: Añadir valores del emisor -->
-  <emisor>
-    <nombre>Holded SA</nombre>
-    <direccion>
-      <calle>joan de Borbó</calle>
-      <codigo_postal>08001</codigo_postal>
-      <poblacion>Barcelona</poblacion>
-      <provincia>Barcelona</provincia>
-      <pais>España</pais>
-    </direccion>
-    <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
-    <email>aldo.solanas@holded.com</email>
-    <telefono>932 710 167</telefono>
-  </emisor>
+<facturas
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="Ejercicio4.xsd">
 
-  <!-- TODO: Añadir informacion del receptor, "nombre", "id_fiscal", "telefono" -->
-  <receptor>
-   <nombre>Holded Technologies</nombre>
-   <id_fiscal>XXXXXXXXXX</id_fiscal>
-   <telefono>932 710 167</telefono>
-  </receptor>
+  <!-- ======================================== -->
+  <!-- FACTURA 1: Original del modelo           -->
+  <!-- ======================================== -->
+  <factura numero="f190030" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>joan de Borbó</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
 
-  <fecha>2019-09-25</fecha>
+    <receptor>
+      <nombre>Holded Technologies</nombre>
+      <id_fiscal>XXXXXXXXXX</id_fiscal>
+      <telefono>932 710 167</telefono>
+    </receptor>
 
-  <lineas>
-    <linea>
-      <concepto>Gafas sol</concepto>
-      <descripcion>Warfare</descripcion>
-      <precio_unitario>90.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>90.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>108.90</total>
-    </linea>
-    <linea>
-      <concepto>VANS bambas</concepto>
-      <descripcion>bamba de color negro old school</descripcion>
-      <precio_unitario>70.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>70.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>84.70</total>
-    </linea>
-    <linea>
-      <concepto>beanie</concepto>
-      <descripcion>Talla M</descripcion>
-      <precio_unitario>25.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>25.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>30.25</total>
-    </linea>
-    <linea>
-      <concepto>tabla de surf</concepto>
-      <descripcion>Modelo 6.3</descripcion>
-      <precio_unitario>356.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>356.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>430.76</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Negra L</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Blanca XL</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>Guantes</concepto>
-      <descripcion>Piel reforzada / negro</descripcion>
-      <precio_unitario>12.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>12.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>14.52</total>
-    </linea>
-    <!-- TODO: Añadir las demás líneas de la factura -->
-  
-  </lineas>
+    <fecha>2019-09-25</fecha>
 
-  <!-- TODO: Añadir valores al resumen -->
-  <resumen>
-    <base_imponible>597.00</base_imponible>
-    <iva_porcentaje>21</iva_porcentaje>
-    <cuota_iva>125.37</cuota_iva>
-    <total>722.37</total>
-  </resumen>
+    <lineas>
+      <linea>
+        <concepto>Gafas sol</concepto>
+        <descripcion>Warfare</descripcion>
+        <precio_unitario>90.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>VANS bambas</concepto>
+        <descripcion>bamba de color negro old school</descripcion>
+        <precio_unitario>70.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>70.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>84.70</total>
+      </linea>
+      <linea>
+        <concepto>beanie</concepto>
+        <descripcion>Talla M</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>25.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>30.25</total>
+      </linea>
+      <linea>
+        <concepto>tabla de surf</concepto>
+        <descripcion>Modelo 6.3</descripcion>
+        <precio_unitario>356.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>356.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>430.76</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Negra L</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Blanca XL</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>Guantes</concepto>
+        <descripcion>Piel reforzada / negro</descripcion>
+        <precio_unitario>12.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>12.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>14.52</total>
+      </linea>
+    </lineas>
 
-  <!-- TODO: Añadir un identificador al tipo de pago, "metodo" -->
-  <pago metodo="transferencia">
-    <iban>ES66210064184012345679</iban>
-  </pago>
-</factura>
+    <resumen>
+      <base_imponible>597.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>125.37</cuota_iva>
+      <total>722.37</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+
+  <!-- ======================================== -->
+  <!-- FACTURA 2: TechSport SL                  -->
+  <!-- ======================================== -->
+  <factura numero="f190031" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>TechSport SL</nombre>
+      <id_fiscal>B87654321</id_fiscal>
+      <telefono>911 223 344</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>zapatillas running</concepto>
+        <descripcion>Modelo Pro X, talla 42</descripcion>
+        <precio_unitario>85.00</precio_unitario>
+        <unidades>8</unidades>
+        <subtotal>680.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>822.80</total>
+      </linea>
+      <linea>
+        <concepto>camiseta tecnica</concepto>
+        <descripcion>Transpirable, talla M</descripcion>
+        <precio_unitario>30.00</precio_unitario>
+        <unidades>10</unidades>
+        <subtotal>300.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>363.00</total>
+      </linea>
+      <linea>
+        <concepto>pantalon corto</concepto>
+        <descripcion>Running, talla M</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>6</unidades>
+        <subtotal>150.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>181.50</total>
+      </linea>
+      <linea>
+        <concepto>calcetines deportivos</concepto>
+        <descripcion>Pack 3 pares</descripcion>
+        <precio_unitario>12.00</precio_unitario>
+        <unidades>3</unidades>
+        <subtotal>36.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>43.56</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>1166.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>244.86</cuota_iva>
+      <total>1410.86</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES7620770024003102575766</iban>
+    </pago>
+  </factura>
+
+  <!-- ======================================== -->
+  <!-- FACTURA 3: Deportes Garcia               -->
+  <!-- ======================================== -->
+  <factura numero="f190032" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Deportes Garcia</nombre>
+      <id_fiscal>A12345678</id_fiscal>
+      <telefono>955 667 788</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>mochila deportiva</concepto>
+        <descripcion>30L, color negro</descripcion>
+        <precio_unitario>55.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>110.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>133.10</total>
+      </linea>
+      <linea>
+        <concepto>botella termos</concepto>
+        <descripcion>500ml acero inoxidable</descripcion>
+        <precio_unitario>18.00</precio_unitario>
+        <unidades>4</unidades>
+        <subtotal>72.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>87.12</total>
+      </linea>
+      <linea>
+        <concepto>gorra visera</concepto>
+        <descripcion>Ajustable, color azul</descripcion>
+        <precio_unitario>15.00</precio_unitario>
+        <unidades>3</unidades>
+        <subtotal>45.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>54.45</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>227.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>47.67</cuota_iva>
+      <total>274.67</total>
+    </resumen>
+
+    <pago metodo="tarjeta">
+      <iban></iban>
+    </pago>
+  </factura>
+
+  <!-- ======================================== -->
+  <!-- FACTURA 4: Moda Joven SL                 -->
+  <!-- ======================================== -->
+  <factura numero="f190033" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Moda Joven SL</nombre>
+      <id_fiscal>B11223344</id_fiscal>
+      <telefono>934 455 667</telefono>
+    </receptor>
+
+    <fecha>2021-03-15</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>sudadera hoodie</concepto>
+        <descripcion>Unisex, talla L, color gris</descripcion>
+        <precio_unitario>45.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>vaqueros slim</concepto>
+        <descripcion>Talla 32, color azul</descripcion>
+        <precio_unitario>60.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>60.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>72.60</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>150.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>31.50</cuota_iva>
+      <total>181.50</total>
+    </resumen>
+
+    <pago metodo="efectivo">
+      <iban></iban>
+    </pago>
+  </factura>
+
+</facturas>
+
+<!-- ============================================================= -->
+<!-- CONSULTAS XPATH PROPUESTAS                                    -->
+<!-- ============================================================= -->
+
+<!-- i. Extraigan los números de factura de aquellas que tengan un importe total superior a 500 €. -->
+<!-- Consulta: //factura[resumen/total > 500]/@numero -->
+
+<!-- ii. Extraigan, para todas las facturas, de qué productos se adquirieron más de cinco unidades. -->
+<!-- Consulta: //linea[unidades > 5]/concepto/text() -->
+
+<!-- iii. Muestren los códigos de la primera y de la última factura registrada en el archivo XML. -->
+<!-- Consulta: (//factura[1]/@numero | //factura[last()]/@numero) -->
+
+<!-- iv. Extraigan los códigos y los importes de todas las facturas realizadas el 1 de enero de 2021. -->
+<!-- Consulta: //factura[fecha="2021-01-01"]/@numero | //factura[fecha="2021-01-01"]/resumen/total/text() -->
+
+<!-- v. Muestren los códigos de todas las facturas que incluyan más de tres productos. -->
+<!-- Consulta: //factura[count(lineas/linea) > 3]/@numero -->

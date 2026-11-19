@@ -1,0 +1,16 @@
+
+
+(: i. Extraigan los números de factura de aquellas que tengan un importe total superior a 500 € :)
+//factura[resumen/total > 500]/@numero
+
+(: ii. Extraigan, para todas las facturas, de qué productos se adquirieron más de cinco unidades :)
+//linea[unidades > 5]/concepto/text()
+
+(: iii. Muestren los códigos de la primera y de la última factura registrada en el archivo XML :)
+(//factura[1]/@numero | //factura[last()]/@numero)
+
+(: iv. Extraigan los códigos y los importes de todas las facturas realizadas el 1 de enero de 2021 :)
+//factura[fecha = '2021-01-01']/@numero | //factura[fecha = '2021-01-01']/resumen/total/text()
+
+(: v. Muestren los códigos de todas las facturas que incluyan más de tres productos :)
+//factura[count(lineas/linea) > 3]/@numero

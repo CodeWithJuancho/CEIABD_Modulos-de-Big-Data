@@ -44,7 +44,9 @@ Este fichero no siempre est disponible.
 
 ]>
 <!-- *************************************************** -->
-<cartelera>
+<cartelera
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="Ejercicio2.xsd">
 	<pelicula codigo="p1" duracion="152" ano="2002">
 		<titulo>AQUELLAS JUERGAS UNIVERSITARIAS</titulo>
 		<titulo_original>Old School</titulo_original>

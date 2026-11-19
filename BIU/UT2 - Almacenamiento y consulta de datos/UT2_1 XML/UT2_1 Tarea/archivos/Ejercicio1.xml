@@ -54,7 +54,9 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 	<!ELEMENT total (#PCDATA)>
 ]>
 <!-- ********************************************** -->
-<factura n_fac="f999">
+<factura n_fac="f999"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="Ejercicio1.xsd">
 	<datos_empresa>
 		<nombre>Equipos Digitales S.L.</nombre>
 		<dir>Av. Valladolid</dir>

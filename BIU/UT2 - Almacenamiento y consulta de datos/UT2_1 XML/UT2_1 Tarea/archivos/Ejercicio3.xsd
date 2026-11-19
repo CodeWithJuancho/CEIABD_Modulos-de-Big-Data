@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- ============================================================ -->
+  <!-- XML Schema para Ejercicio3.xml - Personas                    -->
+  <!-- ============================================================ -->
+
+  <xs:element name="personas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="persona" type="tipoPersona" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="tipoPersona">
+    <xs:sequence>
+      <xs:element name="nombre"    type="xs:string"/>
+      <xs:element name="apellidos" type="xs:string"/>
+      <xs:element name="nacimiento" type="tipoNacimiento" minOccurs="0"/>
+      <xs:element name="direccion"  type="tipoDireccion"  maxOccurs="unbounded"/>
+      <xs:choice>
+        <xs:element name="varon"  type="tipoVacio"/>
+        <xs:element name="hembra" type="tipoVacio"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoNacimiento">
+    <xs:attribute name="dia"  type="xs:string" use="required"/>
+    <xs:attribute name="mes"  type="xs:string" use="required"/>
+    <xs:attribute name="anio" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tipoDireccion">
+    <xs:sequence>
+      <xs:element name="calle"     type="xs:string"/>
+      <xs:element name="poblacion" type="xs:string"/>
+      <xs:element name="provincia" type="xs:string"/>
+      <xs:element name="cpostal"   type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoVacio"/>
+
+</xs:schema>
