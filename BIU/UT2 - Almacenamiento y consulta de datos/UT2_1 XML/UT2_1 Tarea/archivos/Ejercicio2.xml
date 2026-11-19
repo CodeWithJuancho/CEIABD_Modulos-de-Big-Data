@@ -13,10 +13,10 @@ Este fichero no siempre est disponible.
 	- En caso de que no se proporcione el año de una pelcula se asumir que es el 2003. 
 	- En el reparto deberá aparecer un actor como mínimo.  -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
-<!-- Externa -->
-<!DOCTYPE cartelera SYSTEM "./DTD/Ejercicio2.dtd">
+
 <!-- *************************************************** -->
-<cartelera>
+<cartelera xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="./XSD/Ejercicio2.xsd">
 	<pelicula codigo="p1" duracion="152" ano="2002">
 		<titulo>AQUELLAS JUERGAS UNIVERSITARIAS</titulo>
 		<titulo_original>Old School</titulo_original>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="tipoMonedaComa">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+(,[0-9]{1,2})?"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipoPoblacion">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="cod_postal" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="[0-9]{5}"></xs:pattern>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:element name="factura">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="datos_empresa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nombre" type="xs:string"/>
+                            <xs:element name="dir" type="xs:string"/>
+                            <xs:element name="poblacion" type="tipoPoblacion"/>
+                            <xs:element name="provincia" type="xs:string"/>
+                            <xs:element name="cif" type="xs:string"/>
+                            <xs:element name="telefono" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="num" type="xs:string" fixed="917776699"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="datos_cliente">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nombre" type="xs:string"/>
+                            <xs:element name="dir_env" type="xs:string"/>
+                            <xs:element name="poblacion" type="tipoPoblacion"/>
+                            <xs:element name="provincia" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="n_cli" type="xs:ID" use="required" />
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="datos_factura">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="fecha">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[0-9]{2}-[0-9]{2}-[0-9]{4}" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <xs:element name="linea" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ref" type="xs:string"/>
+                                        <xs:element name="desc" type="xs:string"/>
+                                        <xs:element name="cant" type="xs:positiveInteger"/>
+                                        <xs:element name="precio" type="tipoMonedaComa"/>
+                                        <xs:element name="importe" type="tipoMonedaComa"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="base" type="tipoMonedaComa"/>
+                            <xs:element name="cuota_iva" type="tipoMonedaComa"/>
+                            <xs:element name="total" type="tipoMonedaComa"/>
+
+                        </xs:sequence>
+
+                        <xs:attribute name="n_ped" type="xs:ID" use="required"/>
+                        <xs:attribute name="iva" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="[a-zA-Z0-9]+"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="f_pago" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="efectivo"/>
+                                    <xs:enumeration value="tarjeta"/>
+                                    <xs:enumeration value="plazos"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="moneda" type="xs:string" fixed="euro"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="n_fac" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,45 @@
+<!-- Sea el siguiente archivo XML -->
+
+<inventario>
+    <producto codigo="AAA-111">
+        <nombre>Teclado</nombre>
+        <peso unidad="g">480</peso>
+    </producto>
+    <producto codigo="ACD-981">
+        <nombre>Monitor</nombre>
+        <peso unidad="kg">1.8</peso>
+    </producto>
+    <producto codigo="DEZ-138">
+        <nombre>Raton</nombre>
+        <peso unidad="g">50</peso>
+    </producto>
+</inventario>
+
+<!-- Realizar las siguientes consultas XPath -->
+
+<!-- Extraer todos los elementos peso (etiqueta incluida).-->
+/inventario/producto/peso
+
+<!-- Extraer las cantidades de todos los elementos peso (sin la etiqueta <peso>).-->
+/inventario/producto/peso/text()
+
+<!--Extraer el peso del ultimo elemento.-->
+/inventario/producto[last()]/peso
+
+<!--Extraer las distintas unidades en las que se han almacenado los pesos.-->
+/inventario/producto/peso/@unidad
+
+<!-- Extraer el penúltimo codigo.-->
+/inventario/producto[last()-1]/@codigo
+
+<!--Extraer el peso del elemento cuyo codigo sea AAA-111.-->
+/inventario/producto[@codigo="AAA-111"]/peso
+
+<!--Extraer el nombre de los productos que hayan puesto el peso en gramos.-->
+/inventario/producto[peso[@unidad="g"]]/nombre
+
+<!-- Extraer el codigo de los productos cuyo nombre sea «Monitor».-->
+/inventario/producto[nombre/text()="Monitor"]/@codigo
+
+<!-- Extraer el código de los productos que pesen más de un cuarto de kilo.-->
+/inventario/producto[(peso/@unidad="g" and peso/text()>"250") or (peso/@unidad="kg" and peso/text()>"0.25")]/@codigo

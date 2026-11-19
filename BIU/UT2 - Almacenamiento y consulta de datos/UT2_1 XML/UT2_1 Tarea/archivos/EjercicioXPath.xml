@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facturas>
+  <!-- FACTURA 1 (Original: total > 500, 7 productos) -->
+  <factura numero="T190030" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Holded Technologies</nombre>
+      <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
+      <telefono>932 710 167</telefono>
+    </receptor>
+
+    <fecha>2019-09-25</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Gafas sol</concepto>
+        <descripcion>Warfare</descripcion>
+        <precio_unitario>90.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>VANS bambas</concepto>
+        <descripcion>bamba de color negro old school</descripcion>
+        <precio_unitario>70.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>70.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>84.70</total>
+      </linea>
+      <linea>
+        <concepto>beanie</concepto>
+        <descripcion>Talla M</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>25.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>30.25</total>
+      </linea>
+      <linea>
+        <concepto>tabla de surf</concepto>
+        <descripcion>Modelo 6.3</descripcion>
+        <precio_unitario>356.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>356.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>430.76</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Negra L</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Blanca XL</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>Guantes</concepto>
+        <descripcion>Piel reforzada / negro</descripcion>
+        <precio_unitario>12.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>12.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>14.52</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>597.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>125.37</cuota_iva>
+      <total>722.37</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+
+  <!-- FACTURA 2 (Nueva: fecha 2021-01-01, producto con > 5 unidades, total < 500, 2 productos) -->
+  <factura numero="T210001" tipo="completa" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Deportes Norte SL</nombre>
+      <identificacion_fiscal>B87654321</identificacion_fiscal>
+      <telefono>914 555 888</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Calcetines deportivos</concepto>
+        <descripcion>Pack blanco</descripcion>
+        <precio_unitario>10.00</precio_unitario>
+        <unidades>8</unidades>
+        <subtotal>80.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>96.80</total>
+      </linea>
+      <linea>
+        <concepto>Gorra running</concepto>
+        <descripcion>Transpirable azul</descripcion>
+        <precio_unitario>20.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>40.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>48.40</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>120.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>25.20</cuota_iva>
+      <total>145.20</total>
+    </resumen>
+
+    <pago metodo="tarjeta">
+      <iban>ES12210064184098765432</iban>
+    </pago>
+  </factura>
+
+  <!-- FACTURA 3 (Nueva: fecha 2021-01-01, total > 500, producto con > 5 unidades, 4 productos) -->
+  <factura numero="T210002" tipo="completa" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Surf School Canarias</nombre>
+      <identificacion_fiscal>B11223344</identificacion_fiscal>
+      <telefono>928 112 233</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Neopreno 3/2mm</concepto>
+        <descripcion>Talla L</descripcion>
+        <precio_unitario>150.00</precio_unitario>
+        <unidades>4</unidades>
+        <subtotal>600.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>726.00</total>
+      </linea>
+      <linea>
+        <concepto>Parafina surf</concepto>
+        <descripcion>Agua templada</descripcion>
+        <precio_unitario>4.00</precio_unitario>
+        <unidades>10</unidades>
+        <subtotal>40.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>48.40</total>
+      </linea>
+      <linea>
+        <concepto>Invento surf 6 pies</concepto>
+        <descripcion>Negro</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>50.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>60.50</total>
+      </linea>
+      <linea>
+        <concepto>Funda tabla</concepto>
+        <descripcion>Acolchada 6.6</descripcion>
+        <precio_unitario>50.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>50.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>60.50</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>740.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>155.40</cuota_iva>
+      <total>895.40</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES99210064184055667788</iban>
+    </pago>
+  </factura>
+</facturas>

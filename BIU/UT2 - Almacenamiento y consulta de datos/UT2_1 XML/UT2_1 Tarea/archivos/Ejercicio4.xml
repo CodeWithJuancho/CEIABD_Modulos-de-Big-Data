@@ -3,13 +3,14 @@
 <!-- Termina de generar el archivo XML a partir de la imagen de los docomuentos de ejercicios propuestos  -->
 <!-- ********************************************** -->
 <!-- DEFINICIÓN DEL TIPO DE DOCUMENTO -->
-<!-- Externa -->
-<!DOCTYPE factura SYSTEM "./DTD/Ejercicio4.dtd">
+
 
 <!-- ********************************************** -->
 
 <!-- TODO: Añadir los identificadores de la factura, "numero", "tipo" y "moneda" -->
-<factura numero="T190030" tipo="ingreso" moneda="EUR">
+<factura xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="./XSD/Ejercicio4.xsd"
+numero="T190030" tipo="ingreso" moneda="EUR">
   <!-- TODO: Añadir valores del emisor -->
   <emisor>
     <nombre>Holded SA</nombre>

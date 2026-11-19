@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Dado el siguiente fragmento XML -->
+<bib>
+    <libro ano="1994">
+        <titulo>TCP/IP Illustrated</titulo>
+        <autor>
+           <apellido>Stevens</apellido>
+           <nombre>W.</nombre>
+     </autor>
+        <editorial>Addison-Wesley</editorial>
+        <precio> 65.95</precio>
+    </libro>
+    <libro ano="1992">
+        <titulo>Advan Programming for Unix environment</titulo>
+        <autor>
+    <apellido>Stevens</apellido>
+           <nombre>W.</nombre>
+     </autor>
+        <editorial>Addison-Wesley</editorial>
+        <precio>65.95</precio>
+    </libro>
+    <libro ano="2000">
+        <titulo>Data on the Web</titulo>
+        <autor>
+           <apellido>Abiteboul</apellido>
+           <nombre>Serge</nombre>
+     </autor>
+        <autor>
+           <apellido>Buneman</apellido>
+           <nombre>Peter</nombre>
+     </autor>
+        <autor>
+           <apellido>Suciu</apellido>
+           <nombre>Dan</nombre>
+     </autor>
+        <editorial>Morgan Kaufmann editorials</editorial>
+        <precio>39.95</precio>
+    </libro>
+    <libro ano="1999">
+        <titulo> Economics of Technology for Digital TV</titulo>
+        <editor>
+                <apellido>Gerbarg</apellido>
+                <nombre>Darcy</nombre>
+                <afiliacion>CITI</afiliacion>
+        </editor>
+            <editorial>Kluwer Academic editorials</editorial>
+        <precio>129.95</precio>
+    </libro>
+</bib>
+
+<!-- Mostrar los títulos de los libros que tengan más de dos autores ordenados por su título -->
+
+for $b in doc("libros.xml")//bib/libro
+let $c := $b//autor
+where count($c) > 2
+order by $b/titulo
+return $b/ titulo
+
+<!-- Mostrar los títulos de libros publicados en el año 2000 -->
+for $b in doc("libros.xml")//bib/libro
+where $b/@ano = "2000"
+return $b/titulo
+
+<!-- Mostrar los títulos de los libros en los que, al menos uno de sus autores es W. Stevens -->
+
+for $b in doc("libros.xml")//bib/libro
+where some $a in $b/autor
+     satisfies ($a/last="Stevens" and $a/first="W.")
+return $b/titulo
+
+<!-- Mostrar los títulos de todos los libros y sus dos primeros autores. En caso de haber un tercer autor, se añade un tercer autor llamado et al. e -->
+for $b in doc("libros.xml")//bib/libro
+return
+  <libro>
+     { $b/titulo }
+     {
+       for $a at $i in $b/autor
+       where $i <= 2
+       return <autor>{string($a/last), ", ",
+       string($a/first)}</autor>
+    }
+     {
+    if (count($b/autor) > 2)
+    then <autor>et al.</autor>
+    else ()
+    }
+</libro>
