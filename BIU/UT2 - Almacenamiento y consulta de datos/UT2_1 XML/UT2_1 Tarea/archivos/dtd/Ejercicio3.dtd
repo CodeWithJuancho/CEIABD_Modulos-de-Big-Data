@@ -1,0 +1,21 @@
+<!-- Externa -->
+
+<!ELEMENT personas (persona*)>
+
+<!ELEMENT persona (nombre, apellidos, nacimiento?, direccion+, (varon | hembra))>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+
+<!ATTLIST nacimiento dia NMTOKEN #REQUIRED>
+<!ATTLIST nacimiento mes NMTOKEN #REQUIRED>
+<!ATTLIST nacimiento anio NMTOKEN #REQUIRED>
+<!ELEMENT nacimiento EMPTY>
+
+<!ELEMENT varon EMPTY>
+<!ELEMENT hembra EMPTY>
+
+<!ELEMENT direccion (calle, poblacion, provincia, cpostal)>
+<!ELEMENT calle (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT cpostal (#PCDATA)>
