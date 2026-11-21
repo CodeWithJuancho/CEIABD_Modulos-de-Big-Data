@@ -17,46 +17,10 @@ factura, pero siempre que lo hagan deberán tener los mismos valores (teléfono 
 <!-- Externa -->
 <!-- <!DOCTYPE factura SYSTEM "dtd/Ejercicio1.dtd"> -->
 <!-- Interna -->
-<!DOCTYPE factura [
 
-<!ATTLIST factura n_fac ID #REQUIRED>
-<!ELEMENT factura (datos_empresa, datos_cliente, datos_factura)>
-<!ELEMENT datos_empresa (nombre, dir, poblacion, provincia, cif, telefono?, fax?)>
-<!ELEMENT nombre (#PCDATA)>
-<!ELEMENT dir (#PCDATA)>
-<!ELEMENT poblacion (#PCDATA)>
-<!ATTLIST poblacion cod_postal CDATA #REQUIRED>
-<!ELEMENT provincia (#PCDATA)>
-<!ELEMENT cif (#PCDATA)>
-<!ELEMENT telefono EMPTY>
-<!ATTLIST telefono numero CDATA #FIXED "917776688">
-<!ELEMENT fax EMPTY>
-<!ATTLIST fax numero CDATA #FIXED "917776699">
-
-<!ATTLIST datos_cliente n_cli ID #REQUIRED>
-<!ELEMENT datos_cliente (nombre, dir_env, poblacion, provincia)>
-<!ELEMENT dir_env (#PCDATA)>
-
-<!ATTLIST datos_factura n_ped ID #REQUIRED>
-<!ATTLIST datos_factura iva NMTOKEN #REQUIRED>
-<!ATTLIST datos_factura f_pago (efectivo|tarjeta|plazos) #REQUIRED>
-<!ATTLIST datos_factura moneda CDATA #FIXED "euro">
-<!ELEMENT datos_factura (fecha, linea+, base, cuota_iva, total)>
-<!ELEMENT fecha (#PCDATA)>
-<!ELEMENT base (#PCDATA)>
-<!ELEMENT cuota_iva (#PCDATA)>
-<!ELEMENT total (#PCDATA)>
-
-<!ELEMENT linea (ref, desc, cant, precio, importe)>
-<!ELEMENT ref (#PCDATA)>
-<!ELEMENT desc (#PCDATA)>
-<!ELEMENT cant (#PCDATA)>
-<!ELEMENT precio (#PCDATA)>
-<!ELEMENT importe (#PCDATA)>
-
-]>
 <!-- ********************************************** -->
-<factura n_fac="f999">
+<factura xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="xsd/Ejercicio1.xsd" n_fac="f999">
 	<datos_empresa>
 		<nombre>Equipos Digitales S.L.</nombre>
 		<dir>Av. Valladolid</dir>

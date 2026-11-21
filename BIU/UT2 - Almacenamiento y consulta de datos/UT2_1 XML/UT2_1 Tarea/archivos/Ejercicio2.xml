@@ -16,33 +16,9 @@ Este fichero no siempre est disponible.
 <!-- Externa -->
 <!-- <!DOCTYPE cartelera SYSTEM "dtd/Ejercicio2.dtd"> -->
 <!-- Interna -->
-<!DOCTYPE cartelera [
-
-<!ELEMENT cartelera (pelicula+)>
-
-<!ATTLIST pelicula codigo ID #REQUIRED>
-<!ATTLIST pelicula duracion CDATA #REQUIRED>
-<!ATTLIST pelicula ano CDATA "2003">
-<!ELEMENT pelicula (titulo, titulo_original?, nacionalidad, genero, (clasificacion | sin_clasificar), sinopsis, director, reparto, web?, cartel?)>
-<!ELEMENT titulo (#PCDATA)>
-<!ELEMENT titulo_original (#PCDATA)>
-<!ELEMENT nacionalidad (#PCDATA)>
-<!ELEMENT genero (#PCDATA)>
-<!ATTLIST clasificacion edad (tp|8|12|16|18) #REQUIRED>
-<!ELEMENT clasificacion EMPTY>
-<!ELEMENT sin_clasificar EMPTY>
-<!ELEMENT sinopsis (#PCDATA)>
-<!ELEMENT director (#PCDATA)>
-<!ELEMENT web (#PCDATA)>
-<!ELEMENT cartel (#PCDATA)>
-
-<!ELEMENT reparto (actor+)>
-<!ELEMENT actor (#PCDATA)>
-
-
-]>
 <!-- *************************************************** -->
-<cartelera>
+<cartelera xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="xsd/Ejercicio2.xsd">
 	<pelicula codigo="p1" duracion="152" ano="2002">
 		<titulo>AQUELLAS JUERGAS UNIVERSITARIAS</titulo>
 		<titulo_original>Old School</titulo_original>
