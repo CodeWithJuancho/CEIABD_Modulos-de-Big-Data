@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <ul>
+         <li>ASIR</li>
+         <li>Administración de Sistemas Informáticos en Red</li>
+         <li>2009</li>
+      </ul>
+      <ul>
+         <li>DAW</li>
+         <li>Desarrollo de Aplicaciones Web</li>
+         <li>2010</li>
+      </ul>
+      <ul>
+         <li>SMR</li>
+         <li>Sistemas Microinformáticos y Redes</li>
+         <li>2008</li>
+      </ul>
+   </body>
+</html>

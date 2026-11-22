@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Tabla de Ciclos Formativos - CIFP Zonzamas</title>
+   </head>
+   <body>
+      <h1>Ciclos Formativos - CIFP Zonzamas</h1>
+      <table border="1" cellpadding="6" cellspacing="0">
+         <thead>
+            <tr>
+               <th>Código</th>
+               <th>Ciclo Formativo</th>
+               <th>Grado</th>
+               <th>Año del Decreto</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>ASIR</td>
+               <td>Administración de Sistemas Informáticos en Red</td>
+               <td>Superior</td>
+               <td>2009</td>
+            </tr>
+            <tr>
+               <td>DAW</td>
+               <td>Desarrollo de Aplicaciones Web</td>
+               <td>Superior</td>
+               <td>2010</td>
+            </tr>
+            <tr>
+               <td>SMR</td>
+               <td>Sistemas Microinformáticos y Redes</td>
+               <td>Medio</td>
+               <td>2008</td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>

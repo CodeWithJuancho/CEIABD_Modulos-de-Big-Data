@@ -50,23 +50,50 @@
 
 <!-- 1 Libros con precio superior a cincuenta euros -->
 <!-- Creen una consulta XQuery para recuperar todos los libros cuyo precio sea mayor que cincuenta
-euros. Muestren los resultados ordenados por precio. -->
+     euros. Muestren los resultados ordenados por precio. -->
+ for $libro in doc("EjercicioXQuery.xml")/bib/libro
+ let $precio := xs:decimal($libro/precio)
+ where $precio > 50
+ order by $precio
+ return $libro
 
 
 <!-- 2 Libros con varios autores -->
 <!-- Creen una consulta XQuery para recuperar todos los libros que hayan sido escritos por más de un
-autor. Muestren los resultados ordenados por el año de publicación del libro. -->
+     autor. Muestren los resultados ordenados por el año de publicación del libro. -->
+ for $libro in doc("EjercicioXQuery.xml")/bib/libro
+ let $autores := count($libro/autor)
+ where $autores > 1
+ order by $libro/@ano
+ return $libro
 
 
 <!-- 3 Libros de una editorial -->
 <!-- Creen una consulta XQuery para mostrar todos los libros de la editorial Morgan Kaufmann. -->
+for $libro in doc("EjercicioXQuery.xml")/bib/libro
+where starts-with($libro/editorial, "Morgan Kaufmann")
+return $libro
 
 
 <!-- 4 Libros y autores -->
 <!-- Creen una consulta XQuery para mostrar todos los libros y sus autores. Si un libro tiene más de
-un autor, muestren el primero de ellos seguido de «y otros». -->
+     un autor, muestren el primero de ellos seguido de «y otros». -->
+ for $libro in doc("EjercicioXQuery.xml")/bib/libro
+ let $autor := $libro/autor[1]
+ let $total_autor := count($libro/autor)
+ let $sufijo := if ($total_autor > 1) then "y otros" else ()
+ let $nombre_autor := string-join(($autor/nombre, $autor/apellido, $sufijo), " ")
+ return
+    <libro>
+        {$libro/titulo}
+        <autor>{$nombre_autor}</autor>
+    </libro>
+ 
 
 
 <!-- 5 Libros de programación -->
 <!-- Creen una consulta XQuery para mostrar todos los libros de programación, es decir, aquellos que
-contengan la palabra «programming» en su título. -->
+     contengan la palabra «programming» en su título. -->
+ for $libro in doc("EjercicioXQuery.xml")/bib/libro
+ where matches($libro/titulo, "(^|\W)programming(\W|$)", "i")
+return $libro

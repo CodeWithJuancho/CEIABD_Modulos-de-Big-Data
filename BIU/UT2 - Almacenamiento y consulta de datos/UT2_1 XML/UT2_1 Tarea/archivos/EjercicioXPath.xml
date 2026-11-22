@@ -1,101 +1,199 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<factura numero="T190030" tipo="simplificada" moneda="euro">
-  <emisor>
-    <nombre>Holded SA</nombre>
-    <direccion>
-      <calle>Joan de Borbó, 101</calle>
-      <codigo_postal>08001</codigo_postal>
-      <poblacion>Barcelona</poblacion>
-      <provincia>Barcelona</provincia>
-      <pais>España</pais>
-    </direccion>
-    <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
-    <email>aldo.solanas@holded.com</email>
-    <telefono>932 710 167</telefono>
-  </emisor>
+<?xml version='1.0' encoding='utf-8'?>
+<facturas>
+  <factura numero="T190030" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+    <receptor>
+      <nombre>Holded Technologies</nombre>
+      <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
+      <telefono>932 710 167</telefono>
+    </receptor>
+    <fecha>2019-09-25</fecha>
+    <lineas>
+      <linea>
+        <concepto>Gafas sol</concepto>
+        <descripcion>Warfare</descripcion>
+        <precio_unitario>90.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>VANS bambas</concepto>
+        <descripcion>bamba de color negro old school</descripcion>
+        <precio_unitario>70.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>70.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>84.70</total>
+      </linea>
+      <linea>
+        <concepto>beanie</concepto>
+        <descripcion>Talla M</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>25.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>30.25</total>
+      </linea>
+      <linea>
+        <concepto>tabla de surf</concepto>
+        <descripcion>Modelo 6.3</descripcion>
+        <precio_unitario>356.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>356.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>430.76</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Negra L</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Blanca XL</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>Guantes</concepto>
+        <descripcion>Piel reforzada / negro</descripcion>
+        <precio_unitario>12.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>12.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>14.52</total>
+      </linea>
+    </lineas>
+    <resumen>
+      <base_imponible>597.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>125.37</cuota_iva>
+      <total>722.37</total>
+    </resumen>
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+  <factura numero="T190031" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Deportes Atlántico SL</nombre>
+      <direccion>
+        <calle>Calle Mayor, 15</calle>
+        <codigo_postal>28001</codigo_postal>
+        <poblacion>Madrid</poblacion>
+        <provincia>Madrid</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>B12345678</identificacion_fiscal>
+      <email>contacto@example.com</email>
+      <telefono>910 123 456</telefono>
+    </emisor>
+    <receptor>
+      <nombre>Laura Pérez García</nombre>
+      <identificacion_fiscal>12345678A</identificacion_fiscal>
+      <telefono>600 111 222</telefono>
+    </receptor>
+    <fecha>2019-09-26</fecha>
+    <lineas>
+      <linea>
+        <concepto>Mochila deportiva</concepto>
+        <descripcion>Artículo de ejemplo</descripcion>
+        <precio_unitario>40.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>80.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>96.80</total>
+      </linea>
+    </lineas>
+    <resumen>
+      <base_imponible>80.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>16.80</cuota_iva>
+      <total>96.80</total>
+    </resumen>
+    <pago metodo="transferencia">
+      <iban>ES9121000418450200051332</iban>
+    </pago>
+  </factura>
+  <factura numero="T190032" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Papelería Horizonte SL</nombre>
+      <direccion>
+        <calle>Calle Mayor, 15</calle>
+        <codigo_postal>28001</codigo_postal>
+        <poblacion>Madrid</poblacion>
+        <provincia>Madrid</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>B12345678</identificacion_fiscal>
+      <email>contacto@example.com</email>
+      <telefono>910 123 456</telefono>
+    </emisor>
+    <receptor>
+      <nombre>Estudio Creativo Norte SL</nombre>
+      <identificacion_fiscal>12345678A</identificacion_fiscal>
+      <telefono>600 111 222</telefono>
+    </receptor>
+    <fecha>2019-09-27</fecha>
+    <lineas>
+      <linea>
+        <concepto>Cuaderno A4</concepto>
+        <descripcion>Artículo de ejemplo</descripcion>
+        <precio_unitario>5.00</precio_unitario>
+        <unidades>4</unidades>
+        <subtotal>20.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>24.20</total>
+      </linea>
+    </lineas>
+    <resumen>
+      <base_imponible>20.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>4.20</cuota_iva>
+      <total>24.20</total>
+    </resumen>
+    <pago metodo="transferencia">
+      <iban>ES9121000418450200051332</iban>
+    </pago>
+  </factura>
+</facturas>
 
-  <receptor>
-    <nombre>Holded Technologies</nombre>
-    <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
-    <telefono>932 710 167</telefono>
-  </receptor>
+<!-- Ejercicios XPath -->
 
-  <fecha>2019-09-25</fecha>
+<!-- i. Extraigan los números de factura de aquellas que tengan un importe total superior a 500 € -->
+<!-- facturas/factura/resumen[total>500]/total -->
 
-  <lineas>
-    <linea>
-      <concepto>Gafas sol</concepto>
-      <descripcion>Warfare</descripcion>
-      <precio_unitario>90.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>90.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>108.90</total>
-    </linea>
-    <linea>
-      <concepto>VANS bambas</concepto>
-      <descripcion>bamba de color negro old school</descripcion>
-      <precio_unitario>70.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>70.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>84.70</total>
-    </linea>
-    <linea>
-      <concepto>beanie</concepto>
-      <descripcion>Talla M</descripcion>
-      <precio_unitario>25.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>25.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>30.25</total>
-    </linea>
-    <linea>
-      <concepto>tabla de surf</concepto>
-      <descripcion>Modelo 6.3</descripcion>
-      <precio_unitario>356.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>356.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>430.76</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Negra L</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Blanca XL</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>Guantes</concepto>
-      <descripcion>Piel reforzada / negro</descripcion>
-      <precio_unitario>12.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>12.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>14.52</total>
-    </linea>
-  </lineas>
+<!-- ii. Extraigan, para todas las facturas, de qué productos se adquirieron más de cinco unidades. -->
+<!-- facturas/factura/lineas/linea[unidades>5] -->
 
-  <resumen>
-    <base_imponible>597.00</base_imponible>
-    <iva_porcentaje>21</iva_porcentaje>
-    <cuota_iva>125.37</cuota_iva>
-    <total>722.37</total>
-  </resumen>
+<!-- iii. Muestren los códigos de la primera y de la última factura registrada en el archivo XML. -->
+<!-- facturas/factura[position()=1 or position()=last()]/@numero -->
 
-  <pago metodo="transferencia">
-    <iban>ES66210064184012345679</iban>
-  </pago>
-</factura>
+<!-- iv. Extraigan los códigos y los importes de todas las facturas realizadas 
+ el 1 de enero de 2021. -->
+<!-- concat(//factura[translate(fecha, "-", "") = '20210101']/@numero, ' - ', 
+//factura[translate(fecha, "-", "") = '20210101']/resumen/total) -->
+
+<!-- v. Muestren los códigos de todas las facturas que incluyan más de tres productos. -->
+ <!-- //factura[count(lineas/linea) > 3]/@numero -->
