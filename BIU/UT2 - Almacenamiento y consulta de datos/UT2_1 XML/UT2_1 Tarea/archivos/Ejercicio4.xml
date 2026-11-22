@@ -6,54 +6,12 @@
 <!-- Externa -->
 <!-- <!DOCTYPE factura SYSTEM "dtd/Ejercicio4.dtd"> -->
 <!-- Interna -->
-<!DOCTYPE factura [
-
-<!ATTLIST factura numero ID #REQUIRED>
-<!ATTLIST factura tipo CDATA #REQUIRED>
-<!ATTLIST factura moneda NMTOKEN #REQUIRED>
-<!ELEMENT factura (emisor, receptor, fecha, lineas, resumen, pago)>
-<!ELEMENT fecha (#PCDATA)>
-
-<!ELEMENT emisor (nombre, direccion, identificacion_fiscal, email, telefono)>
-<!ELEMENT nombre (#PCDATA)>
-<!ELEMENT identificacion_fiscal (#PCDATA)>
-<!ELEMENT email (#PCDATA)>
-<!ELEMENT telefono (#PCDATA)>
-
-<!ELEMENT direccion (calle, codigo_postal, poblacion, provincia, pais)>
-<!ELEMENT calle (#PCDATA)>
-<!ELEMENT codigo_postal (#PCDATA)>
-<!ELEMENT poblacion (#PCDATA)>
-<!ELEMENT provincia (#PCDATA)>
-<!ELEMENT pais (#PCDATA)>
-
-<!ELEMENT receptor (nombre, id_fiscal, telefono)>
-<!ELEMENT id_fiscal (#PCDATA)>
-
-<!ELEMENT lineas (linea+)>
-<!ELEMENT linea (concepto, descripcion, precio_unitario, unidades, subtotal, iva_porcentaje, total)>
-<!ELEMENT concepto (#PCDATA)>
-<!ELEMENT descripcion (#PCDATA)>
-<!ELEMENT precio_unitario (#PCDATA)>
-<!ELEMENT unidades (#PCDATA)>
-<!ELEMENT subtotal (#PCDATA)>
-<!ELEMENT iva_porcentaje (#PCDATA)>
-<!ELEMENT total (#PCDATA)>
-
-<!ELEMENT resumen (base_imponible, iva_porcentaje, cuota_iva, total)>
-<!ELEMENT base_imponible (#PCDATA)>
-<!ELEMENT cuota_iva (#PCDATA)>
-
-<!ATTLIST pago metodo (Efectivo|Tarjeta|Transferencia) #REQUIRED>
-<!ELEMENT pago (iban?)>
-<!ELEMENT iban (#PCDATA)>
-
-
-]>
 <!-- ********************************************** -->
 
 <!-- TODO: Añadir los identificadores de la factura, "numero", "tipo" y "moneda" -->
-<factura numero="T190030" tipo="FACTURA_SIMPLIFICADA" moneda="EUR">
+<factura xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="xsd/Ejercicio4.xsd" 
+numero="T190030" tipo="FACTURA_SIMPLIFICADA" moneda="EUR">
   <!-- TODO: Añadir valores del emisor -->
   <emisor>
     <nombre>Holded SA</nombre>

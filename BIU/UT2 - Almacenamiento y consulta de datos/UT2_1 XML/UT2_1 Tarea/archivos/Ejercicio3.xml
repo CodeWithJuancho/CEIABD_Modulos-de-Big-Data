@@ -11,32 +11,9 @@ elementos persona.  -->
  <!-- Externa -->
 <!-- <!DOCTYPE personas SYSTEM "dtd/Ejercicio3.dtd"> -->
 <!-- Interna -->
-<!DOCTYPE personas [
-
-<!ELEMENT personas (persona*)>
-
-<!ELEMENT persona (nombre, apellidos, nacimiento?, direccion+, (varon | hembra))>
-<!ELEMENT nombre (#PCDATA)>
-<!ELEMENT apellidos (#PCDATA)>
-
-<!ATTLIST nacimiento dia NMTOKEN #REQUIRED>
-<!ATTLIST nacimiento mes NMTOKEN #REQUIRED>
-<!ATTLIST nacimiento anio NMTOKEN #REQUIRED>
-<!ELEMENT nacimiento EMPTY>
-
-<!ELEMENT varon EMPTY>
-<!ELEMENT hembra EMPTY>
-
-<!ELEMENT direccion (calle, poblacion, provincia, cpostal)>
-<!ELEMENT calle (#PCDATA)>
-<!ELEMENT poblacion (#PCDATA)>
-<!ELEMENT provincia (#PCDATA)>
-<!ELEMENT cpostal (#PCDATA)>
-
-
-]>
 <!-- ********************************************** -->
-<personas>
+<personas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="xsd/Ejercicio3.xsd">
    <persona>
       <nombre>Juan</nombre>
       <apellidos>Pardo</apellidos>

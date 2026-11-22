@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="personas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="persona" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="nombre" type="xs:string"></xs:element>
+                            <xs:element name="apellidos" type="xs:string"></xs:element>
+                            <xs:element name="nacimiento" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="dia" type="xs:integer" use="required"></xs:attribute>
+                                    <xs:attribute name="mes" type="xs:string" use="required"></xs:attribute>
+                                    <xs:attribute name="anio" type="xs:integer" use="required"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="direccion" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="calle" type="xs:string"></xs:element>
+                                        <xs:element name="poblacion" type="xs:string"></xs:element>
+                                        <xs:element name="provincia" type="xs:string"></xs:element>
+                                        <xs:element name="cpostal" type="xs:string"></xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:choice minOccurs="0">
+                                <xs:element name="varon">
+                                    <xs:complexType></xs:complexType>
+                                </xs:element>
+                                <xs:element name="hembra">
+                                    <xs:complexType></xs:complexType>
+                                </xs:element>
+                            </xs:choice>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

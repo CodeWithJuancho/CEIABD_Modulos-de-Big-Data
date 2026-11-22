@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="factura">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="emisor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nombre" type="xs:string"></xs:element>
+                        <xs:element name="direccion">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="calle" type="xs:string"></xs:element>
+                                    <xs:element name="codigo_postal" type="xs:string"></xs:element>
+                                    <xs:element name="poblacion" type="xs:string"></xs:element>
+                                    <xs:element name="provincia" type="xs:string"></xs:element>
+                                    <xs:element name="pais" type="xs:string"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="identificacion_fiscal" type="xs:string"></xs:element>
+                        <xs:element name="email" type="xs:string"></xs:element>
+                        <xs:element name="telefono" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="receptor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="nombre" type="xs:string"></xs:element>
+                        <xs:element name="id_fiscal" type="xs:string"></xs:element>
+                        <xs:element name="telefono" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="fecha" type="xs:string"></xs:element>
+            <xs:element name="lineas">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="linea" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="concepto" type="xs:string"></xs:element>
+                                    <xs:element name="descripcion" type="xs:string"></xs:element>
+                                    <xs:element name="precio_unitario" type="xs:float"></xs:element>
+                                    <xs:element name="unidades" type="xs:float"></xs:element>
+                                    <xs:element name="subtotal" type="xs:float"></xs:element>
+                                    <xs:element name="iva_porcentaje" type="xs:float"></xs:element>
+                                    <xs:element name="total" type="xs:float"></xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="resumen">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="base_imponible" type="xs:float"></xs:element>
+                        <xs:element name="iva_porcentaje" type="xs:float"></xs:element>
+                        <xs:element name="cuota_iva" type="xs:float"></xs:element>
+                        <xs:element name="total" type="xs:float"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="pago">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="iban" type="xs:string" minOccurs="0"></xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="metodo" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Efectivo"></xs:enumeration>
+                                <xs:enumeration value="Tarjeta"></xs:enumeration>
+                                <xs:enumeration value="Transferencia"></xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="numero" type="xs:ID" use="required"></xs:attribute>
+        <xs:attribute name="tipo" type="xs:string" use="required"></xs:attribute>
+        <xs:attribute name="moneda" type="xs:string" use="required"></xs:attribute>
+    </xs:complexType>
+</xs:element>
+</xs:schema>
