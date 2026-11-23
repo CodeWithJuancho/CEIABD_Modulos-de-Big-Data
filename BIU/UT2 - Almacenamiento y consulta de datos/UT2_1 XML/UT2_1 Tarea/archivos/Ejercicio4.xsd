@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="factura">
+        <xs:complexType>
+
+            <xs:sequence>
+                <xs:element name="emisor" type="TipoEmisor"/>
+                <xs:element name="receptor" type="TipoReceptor"/>
+                <xs:element name="fecha" type="xs:date"/>
+                <xs:element name="lineas" type="TipoLineas"/>
+                <xs:element name="resumen" type="TipoResumen"/>
+                <xs:element name="pago" type="TipoPago"/>
+            </xs:sequence>
+
+            <xs:attribute name="numero" type="xs:ID"/>
+            <xs:attribute name="tipo">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="simplificada"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="moneda">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="euro"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TipoEmisor">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="direccion" type="TipoDireccion"/>
+            <xs:element name="identificacion_fiscal" type="xs:string"/>
+            <xs:element name="email">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[^@]+@[^\.]+\..+"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="telefono">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{9}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TipoDireccion">
+        <xs:sequence>
+            <xs:element name="calle" type="xs:string"/>
+            <xs:element name="codigo_postal">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{5}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="poblacion" type="xs:string"/>
+            <xs:element name="provincia" type="xs:string"/>
+            <xs:element name="pais" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TipoReceptor">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="identificacion_fiscal" type="xs:string" />
+            <xs:element name="telefono">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{9}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TipoLineas">
+        <xs:sequence>
+            <xs:element name="linea" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="concepto" type="xs:string"/>
+                        <xs:element name="descripcion" type="xs:string"/>
+                        <xs:element name="precio_unitario" type="xs:decimal"/>
+                        <xs:element name="unidades" type="xs:decimal"/>
+                        <xs:element name="subtotal" type="xs:decimal"/>
+                        <xs:element name="iva_porcentaje" type="xs:decimal"/>
+                        <xs:element name="total" type="xs:decimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TipoResumen">
+        <xs:sequence>
+            <xs:element name="base_imponible" type="xs:decimal"/>
+            <xs:element name="iva_porcentaje" type="xs:decimal"/>
+            <xs:element name="cuota_iva" type="xs:decimal"/>
+            <xs:element name="total" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TipoPago">
+        <xs:sequence>
+            <xs:element name="iban" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="metodo" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="transferencia"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

@@ -6,7 +6,7 @@
 <!-- Externa -->
 <!-- <!DOCTYPE factura SYSTEM ...> -->
 <!-- Interna -->
-<!DOCTYPE factura [
+<!-- <!DOCTYPE factura [
 <!ELEMENT factura (emisor, receptor, fecha, lineas, resumen, pago)>
 <!ATTLIST factura numero ID #REQUIRED>
 <!ATTLIST factura tipo CDATA #REQUIRED>
@@ -39,11 +39,17 @@
 <!ELEMENT pago (iban?)>
 <!ATTLIST pago metodo (transferencia) #REQUIRED>
 <!ELEMENT iban (#PCDATA)>
-]>
+]> -->
 <!-- ********************************************** -->
 
 <!-- TODO: Añadir los identificadores de la factura, "numero", "tipo" y "moneda" -->
-<factura numero="T190030" tipo="simplificada" moneda="euro">
+<factura numero="T190030"
+         tipo="simplificada"
+         moneda="euro"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Ejercicio4.xsd"
+  >
+
   <!-- TODO: Añadir valores del emisor -->
   <emisor>
     <nombre>Holded SA</nombre>

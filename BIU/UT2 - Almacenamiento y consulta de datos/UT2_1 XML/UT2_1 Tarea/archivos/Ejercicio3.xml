@@ -11,7 +11,7 @@ elementos persona.  -->
  <!-- Externa -->
 <!-- <!DOCTYPE personas SYSTEM ...> -->
 <!-- Interna -->
-<!DOCTYPE personas [
+<!-- <!DOCTYPE personas [
 <!ELEMENT personas (persona+)>
 <!ELEMENT persona (nombre, apellidos, nacimiento?, direccion+, (varon|hembra))>
 <!ELEMENT nombre (#PCDATA)>
@@ -27,9 +27,12 @@ elementos persona.  -->
 <!ELEMENT cpostal (#PCDATA)>
 <!ELEMENT varon EMPTY>
 <!ELEMENT hembra EMPTY>
-]>
+]> -->
 <!-- ********************************************** -->
-<personas>
+<personas
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="Ejercicio3.xsd"
+   >
    <persona>
       <nombre>Juan</nombre>
       <apellidos>Pardo</apellidos>

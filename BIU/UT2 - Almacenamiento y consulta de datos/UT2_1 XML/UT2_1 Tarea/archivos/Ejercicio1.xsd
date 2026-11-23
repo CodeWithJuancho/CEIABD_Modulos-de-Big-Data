@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <!-- TODO: - El iva tiene que aparecer siempre, y su valor no puede contener caracteres especiales. -->
-
-
-    
     <xs:element name="factura">
         <xs:complexType>
 
@@ -82,7 +78,7 @@
         </xs:sequence>
 
         <xs:attribute name="n_ped" type="xs:ID" use="required"/>
-        <xs:attribute name="iva" type="xs:int" use="required"/>
+        <xs:attribute name="iva" type="DecimalSinSigno" use="required"/>
         <xs:attribute name="f_pago" use="required">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
@@ -106,5 +102,12 @@
         </xs:sequence>
 
     </xs:complexType>
+
+    <xs:simpleType name="DecimalSinSigno">
+        <xs:restriction base="xs:decimal">
+            <xs:pattern value="[0-9]+(\.[0-9]+)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+
 
 </xs:schema>

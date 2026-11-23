@@ -16,7 +16,7 @@ Este fichero no siempre est disponible.
 <!-- Externa -->
 <!-- <!DOCTYPE cartelera SYSTEM ...> -->
 <!-- Interna -->
-<!DOCTYPE cartelera [
+<!-- <!DOCTYPE cartelera [
 <!ELEMENT cartelera (pelicula+)>
 <!ELEMENT pelicula (titulo, titulo_original?, nacionalidad, genero, (clasificacion|sin_clasificar), sinopsis, director, reparto, web?, cartel?)>
 <!ATTLIST pelicula codigo ID #REQUIRED>
@@ -35,9 +35,14 @@ Este fichero no siempre est disponible.
 <!ELEMENT actor (#PCDATA)>
 <!ELEMENT web (#PCDATA)>
 <!ELEMENT cartel (#PCDATA)>
-]>
+]> -->
 <!-- *************************************************** -->
-<cartelera>
+<cartelera
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="Ejercicio2.xsd"
+	>
+
+
 	<pelicula codigo="p1" duracion="152" ano="2002">
 		<titulo>AQUELLAS JUERGAS UNIVERSITARIAS</titulo>
 		<titulo_original>Old School</titulo_original>
