@@ -43,3 +43,8 @@ return '"' || normalize-space($libro/titulo) || '"' ||
 Creen una consulta XQuery para mostrar todos los libros de programación, es decir, aquellos que contengan la palabra «programming» en su título. :)
 
 
+for $libro in doc("EjercicioXQuery.xml")/bib/libro
+where contains(lower-case($libro/titulo), "programming")
+return $libro
+
+
