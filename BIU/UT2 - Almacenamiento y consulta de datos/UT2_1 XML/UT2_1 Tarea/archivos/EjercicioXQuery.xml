@@ -51,22 +51,82 @@
 <!-- 1 Libros con precio superior a cincuenta euros -->
 <!-- Creen una consulta XQuery para recuperar todos los libros cuyo precio sea mayor que cincuenta
 euros. Muestren los resultados ordenados por precio. -->
+<!-- Consulta:
+for $b in doc("EjercicioXQuery.xml")/bib/libro
+where xs:decimal(normalize-space($b/precio)) > 50
+order by xs:decimal(normalize-space($b/precio))
+return <libro>
+          <titulo>{ normalize-space($b/titulo) }</titulo>
+          <precio>{ xs:decimal(normalize-space($b/precio)) }</precio>
+       </libro>
+
+Resultado (3 libros):
+<libro><titulo>TCP/IP Illustrated</titulo><precio>65.95</precio></libro>
+<libro><titulo>Advan Programming for Unix environment</titulo><precio>65.95</precio></libro>
+<libro><titulo>Economics of Technology for Digital TV</titulo><precio>129.95</precio></libro> -->
 
 
 <!-- 2 Libros con varios autores -->
 <!-- Creen una consulta XQuery para recuperar todos los libros que hayan sido escritos por más de un
 autor. Muestren los resultados ordenados por el año de publicación del libro. -->
+<!-- Consulta:
+for $b in doc("EjercicioXQuery.xml")/bib/libro
+where count($b/autor) > 1
+order by xs:integer($b/@ano)
+return <libro ano="{$b/@ano}">
+          <titulo>{ normalize-space($b/titulo) }</titulo>
+       </libro>
+
+Resultado (1 libro):
+<libro ano="2000"><titulo>Data on the Web</titulo></libro> -->
 
 
 <!-- 3 Libros de una editorial -->
 <!-- Creen una consulta XQuery para mostrar todos los libros de la editorial Morgan Kaufmann. -->
+<!-- Consulta:
+for $b in doc("EjercicioXQuery.xml")/bib/libro
+where contains($b/editorial, "Morgan Kaufmann")
+return <libro>
+          <titulo>{ normalize-space($b/titulo) }</titulo>
+          <editorial>{ normalize-space($b/editorial) }</editorial>
+       </libro>
+
+Resultado (1 libro):
+<libro><titulo>Data on the Web</titulo><editorial>Morgan Kaufmann editorials</editorial></libro> -->
 
 
 <!-- 4 Libros y autores -->
 <!-- Creen una consulta XQuery para mostrar todos los libros y sus autores. Si un libro tiene más de
 un autor, muestren el primero de ellos seguido de «y otros». -->
+<!-- Consulta:
+for $b in doc("EjercicioXQuery.xml")/bib/libro
+let $a := ($b/autor | $b/editor)
+return <libro>
+          <titulo>{ normalize-space($b/titulo) }</titulo>
+          <autores>{
+            if (count($a) > 1)
+            then concat(string($a[1]/apellido), " y otros")
+            else string($a[1]/apellido)
+          }</autores>
+       </libro>
+
+Resultado (4 libros):
+<libro><titulo>TCP/IP Illustrated</titulo><autores>Stevens</autores></libro>
+<libro><titulo>Advan Programming for Unix environment</titulo><autores>Stevens</autores></libro>
+<libro><titulo>Data on the Web</titulo><autores>Abiteboul y otros</autores></libro>
+<libro><titulo>Economics of Technology for Digital TV</titulo><autores>Gerbarg</autores></libro> -->
 
 
 <!-- 5 Libros de programación -->
 <!-- Creen una consulta XQuery para mostrar todos los libros de programación, es decir, aquellos que
 contengan la palabra «programming» en su título. -->
+<!-- Consulta:
+for $b in doc("EjercicioXQuery.xml")/bib/libro
+where contains(lower-case($b/titulo), "programming")
+return <libro>
+          <titulo>{ normalize-space($b/titulo) }</titulo>
+          <ano>{ string($b/@ano) }</ano>
+       </libro>
+
+Resultado (1 libro):
+<libro><titulo>Advan Programming for Unix environment</titulo><ano>1992</ano></libro> -->

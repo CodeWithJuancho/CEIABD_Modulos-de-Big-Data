@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Formato de la factura original, p. ej. #T190030 -->
+  <xs:simpleType name="tipoNumeroFactura">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="#?[A-Z]?[0-9]{1,10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoFactura">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FACTURA SIMPLIFICADA"/>
+      <xs:enumeration value="FACTURA COMPLETA"/>
+      <xs:enumeration value="FACTURA RECTIFICATIVA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoMoneda">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoCodPostal">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoIdFiscal">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z0-9]{8,9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoEmail">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoTelefono">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9 ]{9,15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoIban">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}[0-9]{18,22}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoPorcentaje">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoMetodoPago">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="transferencia"/>
+      <xs:enumeration value="tarjeta"/>
+      <xs:enumeration value="efectivo"/>
+      <xs:enumeration value="domiciliacion"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="factura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="emisor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" type="xs:string"/>
+              <xs:element name="direccion">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="calle" type="xs:string"/>
+                    <xs:element name="codigo_postal" type="tipoCodPostal"/>
+                    <xs:element name="poblacion" type="xs:string"/>
+                    <xs:element name="provincia" type="xs:string"/>
+                    <xs:element name="pais" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="identificacion_fiscal" type="tipoIdFiscal"/>
+              <xs:element name="email" type="tipoEmail"/>
+              <xs:element name="telefono" type="tipoTelefono"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="receptor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" type="xs:string"/>
+              <xs:element name="id_fiscal" type="tipoIdFiscal"/>
+              <xs:element name="telefono" type="tipoTelefono"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="fecha" type="xs:date"/>
+
+        <xs:element name="lineas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="linea" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="concepto" type="xs:string"/>
+                    <xs:element name="descripcion" type="xs:string"/>
+                    <xs:element name="precio_unitario" type="xs:decimal"/>
+                    <xs:element name="unidades" type="xs:positiveInteger"/>
+                    <xs:element name="subtotal" type="xs:decimal"/>
+                    <xs:element name="iva_porcentaje" type="tipoPorcentaje"/>
+                    <xs:element name="total" type="xs:decimal"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="resumen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="base_imponible" type="xs:decimal"/>
+              <xs:element name="iva_porcentaje" type="tipoPorcentaje"/>
+              <xs:element name="cuota_iva" type="xs:decimal"/>
+              <xs:element name="total" type="xs:decimal"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="pago">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="iban" type="tipoIban"/>
+            </xs:sequence>
+            <xs:attribute name="metodo" type="tipoMetodoPago" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+
+      <xs:attribute name="numero" type="tipoNumeroFactura" use="required"/>
+      <xs:attribute name="tipo" type="tipoFactura" use="required"/>
+      <xs:attribute name="moneda" type="tipoMoneda" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,101 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<factura numero="T190030" tipo="simplificada" moneda="euro">
-  <emisor>
-    <nombre>Holded SA</nombre>
-    <direccion>
-      <calle>Joan de Borbó, 101</calle>
-      <codigo_postal>08001</codigo_postal>
-      <poblacion>Barcelona</poblacion>
-      <provincia>Barcelona</provincia>
-      <pais>España</pais>
-    </direccion>
-    <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
-    <email>aldo.solanas@holded.com</email>
-    <telefono>932 710 167</telefono>
-  </emisor>
+<facturas>
+  <factura numero="T190030" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
 
-  <receptor>
-    <nombre>Holded Technologies</nombre>
-    <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
-    <telefono>932 710 167</telefono>
-  </receptor>
+    <receptor>
+      <nombre>Holded Technologies</nombre>
+      <identificacion_fiscal>XXXXXXXXXX</identificacion_fiscal>
+      <telefono>932 710 167</telefono>
+    </receptor>
 
-  <fecha>2019-09-25</fecha>
+    <fecha>2019-09-25</fecha>
 
-  <lineas>
-    <linea>
-      <concepto>Gafas sol</concepto>
-      <descripcion>Warfare</descripcion>
-      <precio_unitario>90.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>90.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>108.90</total>
-    </linea>
-    <linea>
-      <concepto>VANS bambas</concepto>
-      <descripcion>bamba de color negro old school</descripcion>
-      <precio_unitario>70.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>70.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>84.70</total>
-    </linea>
-    <linea>
-      <concepto>beanie</concepto>
-      <descripcion>Talla M</descripcion>
-      <precio_unitario>25.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>25.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>30.25</total>
-    </linea>
-    <linea>
-      <concepto>tabla de surf</concepto>
-      <descripcion>Modelo 6.3</descripcion>
-      <precio_unitario>356.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>356.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>430.76</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Negra L</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>camiseta nike</concepto>
-      <descripcion>Blanca XL</descripcion>
-      <precio_unitario>22.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>22.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>26.62</total>
-    </linea>
-    <linea>
-      <concepto>Guantes</concepto>
-      <descripcion>Piel reforzada / negro</descripcion>
-      <precio_unitario>12.00</precio_unitario>
-      <unidades>1</unidades>
-      <subtotal>12.00</subtotal>
-      <iva_porcentaje>21</iva_porcentaje>
-      <total>14.52</total>
-    </linea>
-  </lineas>
+    <lineas>
+      <linea>
+        <concepto>Gafas sol</concepto>
+        <descripcion>Warfare</descripcion>
+        <precio_unitario>90.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>VANS bambas</concepto>
+        <descripcion>bamba de color negro old school</descripcion>
+        <precio_unitario>70.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>70.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>84.70</total>
+      </linea>
+      <linea>
+        <concepto>beanie</concepto>
+        <descripcion>Talla M</descripcion>
+        <precio_unitario>25.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>25.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>30.25</total>
+      </linea>
+      <linea>
+        <concepto>tabla de surf</concepto>
+        <descripcion>Modelo 6.3</descripcion>
+        <precio_unitario>356.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>356.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>430.76</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Negra L</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>camiseta nike</concepto>
+        <descripcion>Blanca XL</descripcion>
+        <precio_unitario>22.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>22.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>26.62</total>
+      </linea>
+      <linea>
+        <concepto>Guantes</concepto>
+        <descripcion>Piel reforzada / negro</descripcion>
+        <precio_unitario>12.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>12.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>14.52</total>
+      </linea>
+    </lineas>
 
-  <resumen>
-    <base_imponible>597.00</base_imponible>
-    <iva_porcentaje>21</iva_porcentaje>
-    <cuota_iva>125.37</cuota_iva>
-    <total>722.37</total>
-  </resumen>
+    <resumen>
+      <base_imponible>597.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>125.37</cuota_iva>
+      <total>722.37</total>
+    </resumen>
 
-  <pago metodo="transferencia">
-    <iban>ES66210064184012345679</iban>
-  </pago>
-</factura>
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+
+  <factura numero="T190031" tipo="completa" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Oficinas Delta SL</nombre>
+      <identificacion_fiscal>B12345678</identificacion_fiscal>
+      <telefono>934 550 120</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Silla ergonómica</concepto>
+        <descripcion>Modelo Oslo, malla negra</descripcion>
+        <precio_unitario>120.00</precio_unitario>
+        <unidades>3</unidades>
+        <subtotal>360.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>435.60</total>
+      </linea>
+      <linea>
+        <concepto>Lámpara LED</concepto>
+        <descripcion>Escritorio, 12 W</descripcion>
+        <precio_unitario>18.50</precio_unitario>
+        <unidades>10</unidades>
+        <subtotal>185.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>223.85</total>
+      </linea>
+      <linea>
+        <concepto>Mesa plegable</concepto>
+        <descripcion>120 x 60 cm</descripcion>
+        <precio_unitario>45.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+      <linea>
+        <concepto>Cuaderno A4</concepto>
+        <descripcion>Rayado, tapa dura</descripcion>
+        <precio_unitario>3.20</precio_unitario>
+        <unidades>25</unidades>
+        <subtotal>80.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>96.80</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>715.00</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>150.15</cuota_iva>
+      <total>865.15</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+
+  <factura numero="T190032" tipo="simplificada" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Papelería Central</nombre>
+      <identificacion_fiscal>B87654321</identificacion_fiscal>
+      <telefono>933 210 440</telefono>
+    </receptor>
+
+    <fecha>2021-01-01</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Rotulador permanente</concepto>
+        <descripcion>Punta fina, negro</descripcion>
+        <precio_unitario>1.80</precio_unitario>
+        <unidades>8</unidades>
+        <subtotal>14.40</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>17.42</total>
+      </linea>
+      <linea>
+        <concepto>Papel A4 500 hojas</concepto>
+        <descripcion>80 g/m², blanco</descripcion>
+        <precio_unitario>4.50</precio_unitario>
+        <unidades>20</unidades>
+        <subtotal>90.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>108.90</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>104.40</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>21.92</cuota_iva>
+      <total>126.32</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+
+  <factura numero="T190033" tipo="completa" moneda="euro">
+    <emisor>
+      <nombre>Holded SA</nombre>
+      <direccion>
+        <calle>Joan de Borbó, 101</calle>
+        <codigo_postal>08001</codigo_postal>
+        <poblacion>Barcelona</poblacion>
+        <provincia>Barcelona</provincia>
+        <pais>España</pais>
+      </direccion>
+      <identificacion_fiscal>XXXXXXXXX</identificacion_fiscal>
+      <email>aldo.solanas@holded.com</email>
+      <telefono>932 710 167</telefono>
+    </emisor>
+
+    <receptor>
+      <nombre>Estudio Norte SL</nombre>
+      <identificacion_fiscal>B11223344</identificacion_fiscal>
+      <telefono>931 770 880</telefono>
+    </receptor>
+
+    <fecha>2021-03-15</fecha>
+
+    <lineas>
+      <linea>
+        <concepto>Teclado mecánico</concepto>
+        <descripcion>Layout ES, interruptores marrones</descripcion>
+        <precio_unitario>75.00</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>75.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>90.75</total>
+      </linea>
+      <linea>
+        <concepto>Monitor 24 pulgadas</concepto>
+        <descripcion>Full HD, HDMI</descripcion>
+        <precio_unitario>140.00</precio_unitario>
+        <unidades>2</unidades>
+        <subtotal>280.00</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>338.80</total>
+      </linea>
+      <linea>
+        <concepto>Cable HDMI</concepto>
+        <descripcion>2 m, 4K</descripcion>
+        <precio_unitario>9.90</precio_unitario>
+        <unidades>1</unidades>
+        <subtotal>9.90</subtotal>
+        <iva_porcentaje>21</iva_porcentaje>
+        <total>11.98</total>
+      </linea>
+    </lineas>
+
+    <resumen>
+      <base_imponible>364.90</base_imponible>
+      <iva_porcentaje>21</iva_porcentaje>
+      <cuota_iva>76.63</cuota_iva>
+      <total>441.53</total>
+    </resumen>
+
+    <pago metodo="transferencia">
+      <iban>ES66210064184012345679</iban>
+    </pago>
+  </factura>
+</facturas>
+
+<!-- 1.i Números de factura con importe total superior a 500 euros -->
+<!-- Expresión: /facturas/factura[resumen/total > 500]/@numero -->
+<!-- Resultado: numero="T190030" y numero="T190031" -->
+
+<!-- 1.ii Conceptos de los productos adquiridos en más de cinco unidades -->
+<!-- Expresión: /facturas/factura/lineas/linea[unidades > 5]/concepto -->
+<!-- Resultado: Lámpara LED, Cuaderno A4, Rotulador permanente, Papel A4 500 hojas -->
+
+<!-- 1.iii Códigos de la primera y de la última factura -->
+<!-- Expresión: /facturas/factura[1]/@numero | /facturas/factura[last()]/@numero -->
+<!-- Resultado: numero="T190030" y numero="T190033" -->
+
+<!-- 1.iv Códigos e importes de las facturas del 1 de enero de 2021 -->
+<!-- Expresión: /facturas/factura[fecha="2021-01-01"]/@numero | /facturas/factura[fecha="2021-01-01"]/resumen/total -->
+<!-- Resultado: numero="T190031" con total 865.15 y numero="T190032" con total 126.32 -->
+
+<!-- 1.v Códigos de las facturas con más de tres productos -->
+<!-- Expresión: /facturas/factura[count(lineas/linea) > 3]/@numero -->
+<!-- Resultado: numero="T190030" y numero="T190031" -->
